@@ -1,0 +1,14 @@
+@(title: String)(content: Html)
+
+<html>
+	<head>
+		<title>@title</title>
+	</head>
+	<body>
+		<a href="@routes.Users.index()">ユーザ一覧</a>
+		<a href="@routes.Users.newUser()">ユーザ作成</a>
+		<a href="@routes.Authentication.authenticate()">ログイン</a>
+		<a href="@routes.Authentication.logout()">ログアウト</a>
+		@content
+	</body>
+</html>
