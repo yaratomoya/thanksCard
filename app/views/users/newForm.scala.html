@@ -1,0 +1,17 @@
+@(userForm: Form[User])
+
+@import helper._
+
+<html>
+	<body>
+	@common("ユーザ登録画面"){
+		<h1>ユーザ作成</h1>
+
+		@form(routes.Users.createUser()){
+			@inputText(userForm("name"))
+			@inputPassword(userForm("password"))
+			<input type="submit" value="Create">
+		}
+	}
+	</body>
+</html>
