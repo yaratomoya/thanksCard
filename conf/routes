@@ -4,14 +4,6 @@
 
 # Home page
 GET     /                           controllers.Application.index()
-GET		/tasks						controllers.Application.tasks()
-GET		/helps						controllers.Application.helps()
-GET		/addrec						controllers.Application.addrec()
-POST	/addrec						controllers.Application.createTask()
-POST	/addrec						controllers.Application.deleteTask()
-GET		/login						controllers.Authentication.index()
-POST	/login						controllers.Authentication.authenticate()
-GET		/logout						controllers.Authentication.logout()
 GET		/users						controllers.Users.index()
 GET		/users/new					controllers.Users.newUser()
 POST	/users						controllers.Users.createUser()
