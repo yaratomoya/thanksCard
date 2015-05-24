@@ -13,7 +13,7 @@ public class Section extends Model{
 
 	public static Finder<Long, Section> find=new Finder<Long, Section>(
 			Long.class, Section.class
-		);
+	);
 
 	public static Long create(String name){
 		Section section=new Section();

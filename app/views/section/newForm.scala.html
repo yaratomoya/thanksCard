@@ -1,0 +1,16 @@
+@(sectionForm: Form[Section])
+
+@import helper._
+
+<html>
+	<body>
+	@common("部署登録画面"){
+		<h1>部署作成</h1>
+
+		@form(routes.Sections.createSection()){
+			@inputText(sectionForm("sectionName"))
+			<input type="submit" value="Create">
+		}
+	}
+	</body>
+</html>

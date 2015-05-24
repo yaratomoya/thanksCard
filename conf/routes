@@ -7,6 +7,9 @@ GET     /                           controllers.Application.index()
 GET		/users						controllers.Users.index()
 GET		/users/new					controllers.Users.newUser()
 POST	/users						controllers.Users.createUser()
+GET		/sections					controllers.Sections.index()
+GET		/sections/new				controllers.Sections.newSection()
+POST	/sections					controllers.Sections.createSection()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
