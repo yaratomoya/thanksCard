@@ -1,0 +1,89 @@
+
+
+<html>
+
+<head>
+	<style>
+	 .list{width:750px;
+	 border:1px solid #dcdcdc;
+	 padding:10px;
+
+	 margin:30px 0 0 80px;
+
+
+	 }
+
+
+	</style>
+</head>
+
+	<body>
+	@common("感謝カード一覧"){
+		<h1>感謝カード一覧</h1>
+
+	<DIV class="list">
+
+	<h2>受信カード履歴</h2>
+
+			<table border="1" style="table-layout: auto;">
+			<thead style="background-color:#bbb;">
+				<tr>
+					<th>登校日</th>
+					<th>部署</th>
+					<th>名前</th>
+					<th>カテゴリ</th>
+					<th>してもらったこと</th>
+					<th>感謝の言葉</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>date</th>
+					<th>section</th>
+					<th>name</th>
+					<th>category</th>
+					<th>helpText</th>
+					<th>thanksText</th>
+					<th><input type="checkbox" name="check" value=""></th>
+
+				</tr>
+			</tbody>
+		</table>
+
+
+		<input style="margin-left:500px" type="button" name="delete" onclick="" value="削除依頼">
+</DIV>
+
+	<DIV class="list">
+	<h2>送信カード履歴</h2>
+
+
+		<table border="1" style="table-layout: auto;">
+			<thead style="background-color:#bbb;">
+				<tr>
+					<th>登校日</th>
+					<th>部署</th>
+					<th>名前</th>
+					<th>カテゴリ</th>
+					<th>してもらったこと</th>
+					<th>感謝の言葉</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>date</th>
+					<th>section</th>
+					<th>name</th>
+					<th>category</th>
+					<th>helpText</th>
+					<th>thanksText</th>
+			</tr>
+			</tbody>
+		</table>
+
+	</DIV>
+
+
+	}
+	</body>
+</html>
