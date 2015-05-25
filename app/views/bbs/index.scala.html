@@ -1,11 +1,66 @@
-@(userList: List[User])
+
 
 <html>
+
+<head>
+	<style>
+	 #search{border:1px solid #dcdcdc;
+	 		padding:5px;
+			height:130px;
+	 		}
+
+	 .box{width:380px;
+	/* 			border:1px solid #dcdcdc;	*/
+	 			float:left;
+	 }
+	</style>
+</head>
+
 	<body>
 	@common("掲示板"){
 		<h1>掲示板</h1>
 
+	<DIV id=search>
+	<h2>検索</h2>
 
+<form method="get" action="#" class="search">
+
+	<div class="box">
+	感謝された人: <select name ="receptionSection">
+				  <option value="a">部署A</option>
+				  <option value="b">部署B</option>
+				  </select>
+				  <select name ="receptionName">
+				  <option value="a">Aさん</option>
+				  <option value="b">Bさん</option>
+				  </select>
+<br><br>
+	感謝した人&nbsp;&nbsp;&nbsp;：<select name ="userSection">
+				  <option value="a">部署A</option>
+				  <option value="b">部署B</option>
+				  </select>
+				  <select name ="userName">
+				  <option value="a">Aさん</option>
+				  <option value="b">Bさん</option>
+				  </select>
+	</div>
+
+	<div class="box">
+	　　日付：<input type="date" name=year>
+				<input type="date" name=month>
+	<br>
+	カテゴリ：<select name ="Category">
+				  <option value="debag">デバッグ</option>
+				  <option value="clean">環境整備</option>
+				  <option value="other">その他</option>
+				  </select>
+	</div>
+
+	<input type="submit" value="検索" class="btn">
+
+</form>
+
+	</DIV>
 		<table>
 			<thead>
 				<tr>
