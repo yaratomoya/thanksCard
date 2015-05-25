@@ -2,16 +2,30 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
 
 </head>
+
 <body>
+<DIV id =content>
+
+	<h1 style="background-color:#c0c0c0; padding:10px;">ContentTilte</h1>
 	@common("ログイン画面"){
 
 	<h1>ログイン画面</h1>
+	<CENTER>
+	<font size = "10">
+	<p><b>社員ID:  </b>
+	<input type = "text" name = "text" value = ""  size = "50"" MAXLENGTH="10"/></p>
+	<p style = "magin-left:12px;"><b>パスワード:  </b>
+	<input type = "password" name = "pass" value = ""  size = "50"" MAXLENGTH="32"/></p>
+	<input type = "button" name = "button" value = "ログイン"  size = "100""/>
+	</font>
 
-	<p><b>社員ID</b>
-	<input type = "text" name = "text" value = ""  size = "10px" /></p>
 
+	</CENTER>
 	}
+</DIV>
+
 </body>
 </html>
