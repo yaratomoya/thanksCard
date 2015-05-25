@@ -10,6 +10,7 @@ POST	/users						controllers.Users.createUser()
 GET		/sections					controllers.Sections.index()
 GET		/sections/new				controllers.Sections.newSection()
 POST	/sections					controllers.Sections.createSection()
+GET		/login						controloers.
 
 GET		/bbs						controllers.Bbs.index()
 
