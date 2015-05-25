@@ -1,0 +1,59 @@
+
+
+<html>
+
+<head>
+	<style>
+	 .list{width:750px;
+	 border:1px solid #dcdcdc;
+	 padding:10px;
+
+	 margin:30px 0 0 80px;
+
+
+	 }
+
+
+	</style>
+</head>
+
+	<body>
+	@common("掲示板管理"){
+		<h1>掲示板管理</h1>
+
+	<DIV class="list">
+
+	<h2>削除依頼一覧</h2>
+
+			<table border="1" style="table-layout: auto;">
+			<thead style="background-color:#bbb;">
+				<tr>
+					<th>投稿日</th>
+					<th>感謝した人</th>
+					<th>感謝された人</th>
+					<th>してもらったこと</th>
+					<th>感謝の言葉</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>date</th>
+					<th>send</th>
+					<th>reception</th>
+					<th>helpText</th>
+					<th>thanksText</th>
+					<th><input type="checkbox" name="check" value=""></th>
+
+				</tr>
+			</tbody>
+		</table>
+
+		<br>
+		<input style="margin-left:400;" type="button" name="delete" onclick="" value="削除">
+</DIV>
+
+
+
+	}
+	</body>
+</html>
