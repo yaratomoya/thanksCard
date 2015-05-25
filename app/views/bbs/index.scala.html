@@ -77,8 +77,9 @@
 
 	</DIV>
 
-
+	<h2>今月の代表事例</h2>
 	<DIV id="BBS">
+
 
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
@@ -114,9 +115,9 @@
 	</DIV>
 
 	<div id=changeBtn>
-			<input type="button" name="lastMonth" value="先月の事例">
+			<input type="button" name="lastMonth" onclick="location.href='@routes.Bbs.lastMonth()'" value="先月の事例">
 <br>
-			<input type="button" name="thisMonth" value="今月の事例">
+			<input type="button" name="thisMonth" onclick="location.href='@routes.Bbs.index()'" value="今月の事例">
 	</div>
 
 	}
