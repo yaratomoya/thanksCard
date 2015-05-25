@@ -2,11 +2,36 @@
 
 <html>
 	<head>
+		 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
+
 		<title>@title</title>
 	</head>
 	<body>
+
+	<DIV id =content>
+
+	<a style="display:block;text-align:right;" href="">ログアウト</a>
+
+	<h1 style="background-color:#c0c0c0; padding:10px;">ContentTilte</h1>
+
+	 <DIV id =menu>
+		<a href="">掲示板</a>
+		<a href="">感謝カード<br>入力</a>
+		<a href="">受信カード<br>一覧</a>
+		<a href="">掲示板管理</a>
+		<a href="">感謝カード<br>集計</a>
+		<a href="">ユーザ管理</a>
+		<a href="">部署管理</a>
+		<a href="">カテゴリ管理</a>
+		</DIV>
+
+<br>	<DIV id=mainContent>
 		<a href="@routes.Users.index()">ユーザ一覧</a>
 		<a href="@routes.Users.newUser()">ユーザ作成</a>
+
+
 		@content
+		</DIV>
+		</DIV>
 	</body>
 </html>

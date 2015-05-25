@@ -1,0 +1,41 @@
+body{
+	background-color:#dcdcdc;
+}
+
+
+#content{
+	width:1000px;
+	margin:auto;
+	padding:40px;
+	background-color:#fff;
+
+}
+
+#menu {
+	display:inline;
+	width:950px;
+	margin:20px;
+}
+
+#menu a{
+
+  border:1px solid #dcdcdc;
+	display:block;
+  width:120px;
+  height:50px;
+  font-size:19px;
+  padding:;
+  font-weight:;
+  background:#fff;
+  float:left;
+  text-align:center;
+  line-height:;
+  overflow:hidden;
+
+}
+
+#mainContent{
+	padding-top:100px;
+
+}
+"
