@@ -13,6 +13,7 @@ POST	/sections					controllers.Sections.createSection()
 GET		/login						controloers.
 
 GET		/bbs						controllers.Bbs.index()
+GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
