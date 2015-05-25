@@ -10,10 +10,12 @@ POST	/users						controllers.Users.createUser()
 GET		/sections					controllers.Sections.index()
 GET		/sections/new				controllers.Sections.newSection()
 POST	/sections					controllers.Sections.createSection()
-GET		/login						controloers.
+
+GET		/login						controllers.Login.index()
 
 GET		/bbs						controllers.Bbs.index()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
+
