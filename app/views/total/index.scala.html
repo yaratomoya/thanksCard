@@ -1,0 +1,68 @@
+
+
+<html>
+
+<head>
+	<style>
+
+	#search{border:1px solid #dcdcdc;
+		margin:20px;
+		padding:0 0 20px 20px;
+		width:300px;
+	}
+
+	 #rank{width:750px;
+	 border:1px solid #dcdcdc;
+	 padding:10px;
+
+	 margin:30px 0 0 80px;
+
+
+	 }
+
+
+	</style>
+</head>
+
+	<body>
+	@common("集計画面"){
+		<h1>集計画面</h1>
+
+	<DIV id="search">
+
+	<h2>検索オプション</h2>
+
+			部署　：　<select name ="receptionSection">
+				  <option value="a">部署A</option>
+				  <option value="b">部署B</option>
+				  </select>
+				  <input type="submit" value="検索">
+</DIV>
+
+<DIV id=rank>
+		<table border="1" style="table-layout: auto;">
+			<thead style="background-color:#bbb;">
+				<tr>
+					<th>ランキング</th>
+					<th>名前</th>
+					<th>感謝された数</th>
+					<th>いいね！数</th>
+					<th>内容</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<th>1位</th>
+					<th>name</th>
+					<th>totalhelp</th>
+					<th>goodcount</th>
+					<th>content</th>
+				</tr>
+			</tbody>
+		</table>
+
+</DIV>
+
+	}
+	</body>
+</html>
