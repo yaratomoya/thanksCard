@@ -2,8 +2,8 @@ package models;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
-
 import javax.persistence.*;
+import java.util.*;
 
 @Entity
 public class HelpCategory extends Model{
@@ -11,8 +11,8 @@ public class HelpCategory extends Model{
 	@ManyToOne
 	public Long categoryID;
 	public String categoryName;
-	@ManyToOne
-	public ThanksCard card;
+	@OneToMany
+	public List<ThanksCard> card;
 
 	public static Finder<Long, HelpCategory> find=new Finder<Long, HelpCategory>(
 			Long.class, HelpCategory.class

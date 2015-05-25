@@ -19,7 +19,6 @@ create table good_count (
 create table help_category (
   category_id               bigint not null,
   category_name             varchar(255),
-  card_card_id              integer,
   constraint pk_help_category primary key (category_id))
 ;
 
@@ -61,12 +60,10 @@ create sequence thanks_card_seq;
 
 create sequence user_seq;
 
-alter table help_category add constraint fk_help_category_card_1 foreign key (card_card_id) references thanks_card (card_id) on delete restrict on update restrict;
-create index ix_help_category_card_1 on help_category (card_card_id);
-alter table thanks_card add constraint fk_thanks_card_receive_2 foreign key (receive_user_id) references user (user_id) on delete restrict on update restrict;
-create index ix_thanks_card_receive_2 on thanks_card (receive_user_id);
-alter table user add constraint fk_user_section_3 foreign key (section_section_id) references section (section_id) on delete restrict on update restrict;
-create index ix_user_section_3 on user (section_section_id);
+alter table thanks_card add constraint fk_thanks_card_receive_1 foreign key (receive_user_id) references user (user_id) on delete restrict on update restrict;
+create index ix_thanks_card_receive_1 on thanks_card (receive_user_id);
+alter table user add constraint fk_user_section_2 foreign key (section_section_id) references section (section_id) on delete restrict on update restrict;
+create index ix_user_section_2 on user (section_section_id);
 
 
 

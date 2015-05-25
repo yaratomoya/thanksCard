@@ -1,5 +1,7 @@
 package models;
 
+import java.util.*;
+
 import javax.persistence.*;
 
 import play.db.ebean.Model;
@@ -11,7 +13,8 @@ public class Section extends Model{
 	public Long sectionID;
 	public String sectionName;
 	@OneToMany
-	public User user;
+	public List<User> user;
+	//public User user;
 
 	public static Finder<Long, Section> find=new Finder<Long, Section>(
 			Long.class, Section.class

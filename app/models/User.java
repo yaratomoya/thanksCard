@@ -1,8 +1,8 @@
 package models;
 
 import javax.persistence.*;
-
 import play.db.ebean.*;
+import java.util.*;
 
 @Entity
 public class User extends Model{
@@ -13,8 +13,9 @@ public class User extends Model{
 	public Integer permission;
 	@ManyToOne
 	public Section section;
-	@OneToMany
-	public ThanksCard card;
+	@OneToMany(cascade=CascadeType.ALL, mappedBy="receive")
+	public List<ThanksCard> card=new ArrayList<ThanksCard>();
+	//public ThanksCard card;
 	//@OneToMany
 	//public User receive;
 	//@OneToMany
