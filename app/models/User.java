@@ -11,7 +11,7 @@ public class User extends Model{
 	public String userName;
 	public String userPassword;
 	public Integer permission;
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	public Section section;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
