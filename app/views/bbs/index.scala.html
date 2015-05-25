@@ -6,13 +6,28 @@
 	<style>
 	 #search{border:1px solid #dcdcdc;
 	 		padding:5px;
-			height:130px;
+			height:120px;
+			margin-bottom:50px;
 	 		}
 
 	 .box{width:380px;
 	/* 			border:1px solid #dcdcdc;	*/
 	 			float:left;
 	 }
+
+	 #BBS{width:750px;
+	 border:1px solid #dcdcdc;
+	 padding:10px;
+	 float:right;
+
+	 }
+
+
+	#changeBtn{border:1px solid #dcdcdc;
+				padding:10px;
+				text-align:center;
+	}
+
 	</style>
 </head>
 
@@ -61,16 +76,49 @@
 </form>
 
 	</DIV>
-		<table>
-			<thead>
+
+
+	<DIV id="BBS">
+
+		<table border="1" style="table-layout: auto;">
+			<thead style="background-color:#bbb;">
 				<tr>
-					<th></th>
+					<th>日付</th>
+					<th>部署</th>
+					<th>名前</th>
+					<th>カテゴリ</th>
+					<th>してもらったこと</th>
+					<th>感謝の言葉</th>
+					<th>部署</th>
+					<th>名前</th>
+					<th>いいね！</th>
+					<th>詳細</th>
 				</tr>
 			</thead>
 			<tbody>
-
+				<tr>
+					<th>date</th>
+					<th>section</th>
+					<th>name</th>
+					<th>category</th>
+					<th>helpText</th>
+					<th>thanksText</th>
+					<th>section</th>
+					<th>name</th>
+					<th>goodCount</th>
+					<th>btn</th>
+				</tr>
 			</tbody>
 		</table>
+
+	</DIV>
+
+	<div id=changeBtn>
+			<input type="button" name="lastMonth" value="先月の事例">
+<br>
+			<input type="button" name="thisMonth" value="今月の事例">
+	</div>
+
 	}
 	</body>
 </html>
