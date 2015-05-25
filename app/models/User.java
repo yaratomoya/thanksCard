@@ -11,8 +11,14 @@ public class User extends Model{
 	public String userName;
 	public String userPassword;
 	public Integer permission;
-	@OneToOne(cascade=CascadeType.ALL)
+	@ManyToOne
 	public Section section;
+	@OneToMany
+	public ThanksCard card;
+	//@OneToMany
+	//public User receive;
+	//@OneToMany
+	//public User send;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
 		Long.class, User.class

@@ -8,8 +8,11 @@ import javax.persistence.*;
 @Entity
 public class HelpCategory extends Model{
 	@Id
+	@ManyToOne
 	public Long categoryID;
 	public String categoryName;
+	@ManyToOne
+	public ThanksCard card;
 
 	public static Finder<Long, HelpCategory> find=new Finder<Long, HelpCategory>(
 			Long.class, HelpCategory.class
