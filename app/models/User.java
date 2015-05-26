@@ -13,13 +13,7 @@ public class User extends Model{
 	public Integer permission;
 	@ManyToOne
 	public Section section;
-	@OneToMany(cascade=CascadeType.ALL, mappedBy="receive")
-	public List<ThanksCard> card=new ArrayList<ThanksCard>();
-	//public ThanksCard card;
-	//@OneToMany
-	//public User receive;
-	//@OneToMany
-	//public User send;
+	//public List<ThanksCard> card;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
 		Long.class, User.class

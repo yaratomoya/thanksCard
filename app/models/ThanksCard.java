@@ -15,12 +15,8 @@ public class ThanksCard extends Model{
 	public Date sendDay;
 	public Integer deleteRequest;
 	public Date helpDate;
-	@ManyToOne
-	public HelpCategory category;
-	//@ManyToOne
-	//public User send;
-	@ManyToOne
-	public User receive;
+	//public HelpCategory category;
+	//public User receive;
 	public String sendName;
 	public String sendSection;
 }

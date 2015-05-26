@@ -8,11 +8,8 @@ import java.util.*;
 @Entity
 public class HelpCategory extends Model{
 	@Id
-	@ManyToOne
 	public Long categoryID;
 	public String categoryName;
-	@OneToMany
-	public List<ThanksCard> card;
 
 	public static Finder<Long, HelpCategory> find=new Finder<Long, HelpCategory>(
 			Long.class, HelpCategory.class

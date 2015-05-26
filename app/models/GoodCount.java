@@ -6,7 +6,7 @@ import play.db.ebean.Model;
 @Entity
 public class GoodCount extends Model{
 	@Id
-	public User user;
+	public Long userid;
 	@Id
-	public ThanksCard card;
+	public Long cardid;
 }

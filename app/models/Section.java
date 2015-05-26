@@ -12,9 +12,8 @@ public class Section extends Model{
 	@Id
 	public Long sectionID;
 	public String sectionName;
-	@OneToMany
-	public List<User> user;
-	//public User user;
+	//@OneToMany
+	//public List<User> user;
 
 	public static Finder<Long, Section> find=new Finder<Long, Section>(
 			Long.class, Section.class
