@@ -17,6 +17,7 @@ GET		/bbs						controllers.Bbs.index()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 
 GET		/send						controllers.Send.index()
+POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
 
@@ -26,4 +27,3 @@ GET		/total						controllers.Total.index()
 
 # Map static resources from the /public folder to the /assets URL path
 GET     /assets/*file               controllers.Assets.at(path="/public", file)
-
