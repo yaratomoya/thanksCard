@@ -1,18 +1,17 @@
 package models;
 
 import javax.persistence.*;
-
 import play.db.ebean.*;
 
 @Entity
 public class User extends Model{
 	@Id
 	public Long userID;
+	public String userCD;
 	public String userName;
 	public String userPassword;
 	public Integer permission;
-	@ManyToOne
-	public Section section;
+	public Long section_id;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
 		Long.class, User.class
