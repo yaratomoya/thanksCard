@@ -1,9 +1,7 @@
 package models;
 
 import java.util.*;
-
 import javax.persistence.*;
-
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
 

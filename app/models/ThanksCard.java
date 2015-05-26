@@ -1,15 +1,14 @@
 package models;
 
 import java.util.Date;
-
 import javax.persistence.*;
-
 import play.db.ebean.Model;
+import play.db.ebean.Model.Finder;
 
 @Entity
 public class ThanksCard extends Model{
 	@Id
-	public Integer cardID;
+	public Long cardID;
 	public String helpText;
 	public String thanksText;
 	public Date sendDay;
@@ -21,4 +20,8 @@ public class ThanksCard extends Model{
 	public User receive;
 	@ManyToOne
 	public User send;
+
+	public static Finder<Long, ThanksCard> find=new Finder<Long, ThanksCard>(
+			Long.class, ThanksCard.class
+	);
 }
