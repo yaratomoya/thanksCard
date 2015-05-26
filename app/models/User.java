@@ -13,7 +13,6 @@ public class User extends Model{
 	public Integer permission;
 	@ManyToOne
 	public Section section;
-	//public List<ThanksCard> card;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
 		Long.class, User.class
