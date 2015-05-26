@@ -1,14 +1,16 @@
+@(sendForm: Form[Send])
 
+@import helper._
 
 <html>
 
 <head>
 	<style>
 
-	#formName{/*border:1px solid #dcdcdc;*/
+ 	#formName{/*border:1px solid #dcdcdc; */
 		text-align:right;
 		float:left;
-		margin-left:150px;
+		margin:40px 0 0 150px;
 
 	}
 
@@ -43,40 +45,25 @@
 
 
 	<DIV id =form>
+	@form(routes.Send.create()){
 
-		<!感謝される人>
-				<select name ="receptionSection">
-				  <option value="a">部署A</option>
-				  <option value="b">部署B</option>
-				  </select>
-				  <select name ="receptionName">
-				  <option value="a">Aさん</option>
-				  <option value="b">Bさん</option>
-				  </select>
-			<br><br>
-		<!してもらったこと>
-				<textarea name="example" cols="50" rows="6"></textarea>
-			<br><br>
-		<!感謝の言葉>
-				<textarea name="example" cols="50" rows="6"></textarea>
-	 		<br><br>
-	 	<!日付>
-	 			<input type="text" name="date">
-	 		<br><br>
-		<!カテゴリ>
-				<select name ="Category">
-				  <option value="debag">デバッグ</option>
-				  <option value="clean">環境整備</option>
-				  <option value="other">その他</option>
-				  </select>
-			<br><br>
+			@select(sendForm("receptionSection"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "")
+			@select(sendForm("receptionName"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "")
+			@textarea(sendForm("helpText"), 'cols -> 50,  'rows -> 6, '_label -> "")
+			@textarea(sendForm("thanksText"), 'cols -> 50,  'rows -> 6, '_label -> "")
+			@inputDate(sendForm("date"), '_label -> "")
+			@select(sendForm("category"),options("debag" -> "デバッグ", "clean" -> "環境整備", "other" -> "その他"), '_default -> "-- カテゴリ --", '_label -> "")
+
+
 
 			<input style="margin-left:200px;" type="submit" name="send" onclick="" value="登録">
 			<input style="margin-left:100px;" type="button" name="reset" onclick="" value="クリア">
 
+}
 	</DIV>
 
 
 	}
 	</body>
 </html>
+
