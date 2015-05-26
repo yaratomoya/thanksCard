@@ -3,15 +3,58 @@
 @import helper._
 
 <html>
+<head>
+
+<style>
+
+.manage{border:1px solid #dcdcdc;
+		margin:10px;
+		}
+
+</style>
+
+</head>
+
 	<body>
 	@common("ユーザ登録画面"){
-		<h1>ユーザ作成</h1>
+
+		<a href="@routes.Users.index()">ユーザ一覧</a>
+		<a href="@routes.Users.newUser()">ユーザ登録</a>
+
+
+		<h1>社員データ管理</h1>
+
+	<DIV class="manage">
+		<h2>社員データ新規登録</h2>
 
 		@form(routes.Users.createUser()){
-			@inputText(userForm("userName"))
-			@inputPassword(userForm("userPassword"))
+			@inputText(userForm("userCD"), '_label -> "社員ID")
+			@inputText(userForm("userName"), '_label -> "社員名")
+			@select(userForm("section_id"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+			@inputText(userForm("userPassword"), '_label -> "パスワード")
+
 			<input type="submit" value="Create">
 		}
+
+
+
+		</DIV>
+
+	<DIV class="manage">
+		<h2>社員データ変更</h2>
+
+		@form(routes.Users.updateUser()){
+			@inputText(userForm("userCD"), '_label -> "社員ID")
+			@inputText(userForm("userName"), '_label -> "社員名")
+			@inputText(userForm("section_id"), '_label -> "部署")
+			@inputText(userForm("userPassword"), '_label -> "パスワード")
+
+			<input type="submit" value="Create">
+		}
+
+
+
+		</DIV>
 	}
 	</body>
 </html>
