@@ -29,4 +29,10 @@ public class Users extends Controller{
 		User.create(user.userName, user.userPassword, user.permission);
 		return redirect(routes.Users.index());
 	}
+
+
+	public static Result updateUser(){
+		return ok("update");
+	}
+
 }
