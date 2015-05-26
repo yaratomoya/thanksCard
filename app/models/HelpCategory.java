@@ -2,7 +2,6 @@ package models;
 
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
-
 import javax.persistence.*;
 
 @Entity
