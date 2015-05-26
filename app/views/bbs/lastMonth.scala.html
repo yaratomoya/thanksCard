@@ -1,3 +1,6 @@
+@(bbsForm: Form[Bbs])
+
+@import helper._
 
 
 <html>
@@ -6,14 +9,9 @@
 	<style>
 	 #search{border:1px solid #dcdcdc;
 	 		padding:5px;
-			height:120px;
 			margin-bottom:50px;
 	 		}
 
-	 .box{width:380px;
-	/* 			border:1px solid #dcdcdc;	*/
-	 			float:left;
-	 }
 
 	 #BBS{width:750px;
 	 border:1px solid #dcdcdc;
@@ -38,44 +36,22 @@
 	<DIV id=search>
 	<h2>検索</h2>
 
-<form method="get" action="#" class="search">
+	@form(routes.Bbs.search()){
 
-	<div class="box">
-	感謝された人: <select name ="receptionSection">
-				  <option value="a">部署A</option>
-				  <option value="b">部署B</option>
-				  </select>
-				  <select name ="receptionName">
-				  <option value="a">Aさん</option>
-				  <option value="b">Bさん</option>
-				  </select>
-<br><br>
-	感謝した人&nbsp;&nbsp;&nbsp;：<select name ="userSection">
-				  <option value="a">部署A</option>
-				  <option value="b">部署B</option>
-				  </select>
-				  <select name ="userName">
-				  <option value="a">Aさん</option>
-				  <option value="b">Bさん</option>
-				  </select>
-	</div>
+			@select(bbsForm("sectionName"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(bbsForm("receive_id"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "名前")
+			@select(bbsForm("sectionName"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(bbsForm("send_id"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "名前")
+			@inputDate(bbsForm("date"), '_label -> "日付")
+			@select(bbsForm("category"),options("debag" -> "デバッグ", "clean" -> "環境整備", "other" -> "その他"), '_default -> "-- カテゴリ --", '_label -> "カテゴリ")
 
-	<div class="box">
-	　　日付：<input type="date" name=year>
-				<input type="date" name=month>
-	<br>
-	カテゴリ：<select name ="Category">
-				  <option value="debag">デバッグ</option>
-				  <option value="clean">環境整備</option>
-				  <option value="other">その他</option>
-				  </select>
-	</div>
 
 	<input type="submit" value="検索" class="btn">
 
-</form>
+}
 
 	</DIV>
+
 
 	<h2>先月の代表事例</h2>
 	<DIV id="BBS">
