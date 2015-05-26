@@ -19,4 +19,6 @@ public class ThanksCard extends Model{
 	public HelpCategory category;
 	@ManyToOne
 	public User receive;
+	@ManyToOne
+	public User send;
 }
