@@ -3,7 +3,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-
+<style>
+div#pass{
+width:-5px;
+}
+</style>
 </head>
 
 <body>
@@ -13,16 +17,17 @@
 	@common("ログイン画面"){
 
 	<h1>ログイン画面</h1>
+
+	<font size = "7">
+	<p><b>　　　　　　　　　社員ID: </b>
+	<input type = "text" name = "text" value = ""  size = "20"" MAXLENGTH="10"/></p>
+	<div id = pass>
+	<p><b>　　　　　　　パスワード:  </b>
+	<input type = "password" name = "pass" value = ""  size = "20"" MAXLENGTH="32"/></p>
+	</div>
 	<CENTER>
-	<font size = "10">
-	<p><b>社員ID:  </b>
-	<input type = "text" name = "text" value = ""  size = "50"" MAXLENGTH="10"/></p>
-	<p style = "magin-left:12px;"><b>パスワード:  </b>
-	<input type = "password" name = "pass" value = ""  size = "50"" MAXLENGTH="32"/></p>
-	<input type = "button" name = "button" value = "ログイン"  size = "100""/>
+	<input type = "button" name = "button" value = "ログイン"  size = "150""/>
 	</font>
-
-
 	</CENTER>
 	}
 </DIV>
