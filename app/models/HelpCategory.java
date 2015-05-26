@@ -10,6 +10,8 @@ public class HelpCategory extends Model{
 	@Id
 	public Long categoryID;
 	public String categoryName;
+	//@OneToMany
+	//public List<ThanksCard> cards;
 
 	public static Finder<Long, HelpCategory> find=new Finder<Long, HelpCategory>(
 			Long.class, HelpCategory.class
