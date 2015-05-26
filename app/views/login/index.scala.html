@@ -17,8 +17,8 @@
 	<h1>ログイン画面</h1>
 
 		@form(routes.Login.authenticate()){
-			@inputText(loginForm("社員ID"))
-			@inputPassword(loginForm("パスワード"))
+			@inputText(loginForm("userCD"),'_label -> "社員ID")
+			@inputPassword(loginForm("userPassword"),'_label -> "パスワード")
 			<input type="submit" value="ログイン">
 		}
 	}
