@@ -1,13 +1,11 @@
+@(loginForm: Form[Login])
 
+@import helper._
 <html>
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" media="screen" href="@routes.Assets.at("stylesheets/main.css")">
-<style>
-div#pass{
-width:-5px;
-}
-</style>
+
 </head>
 
 <body>
@@ -18,17 +16,11 @@ width:-5px;
 
 	<h1>ログイン画面</h1>
 
-	<font size = "7">
-	<p><b>　　　　　　　　　社員ID: </b>
-	<input type = "text" name = "text" value = ""  size = "20"" MAXLENGTH="10"/></p>
-	<div id = pass>
-	<p><b>　　　　　　　パスワード:  </b>
-	<input type = "password" name = "pass" value = ""  size = "20"" MAXLENGTH="32"/></p>
-	</div>
-	<CENTER>
-	<input type = "button" name = "button" value = "ログイン"  size = "150""/>
-	</font>
-	</CENTER>
+		@form(routes.Login.authenticate()){
+			@inputText(loginForm("社員ID"))
+			@inputPassword(loginForm("パスワード"))
+			<input type="submit" value="ログイン">
+		}
 	}
 </DIV>
 
