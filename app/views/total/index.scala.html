@@ -1,4 +1,6 @@
+@(totalForm: Form[Total])
 
+@import helper._
 
 <html>
 
@@ -32,16 +34,28 @@
 
 	<h2>検索オプション</h2>
 
-			部署　：　<select name ="receptionSection">
-				  <option value="a">部署A</option>
-				  <option value="b">部署B</option>
-				  </select>
-				  <input type="submit" value="検索">
+		@form(routes.Total.search()){
+
+			@select(totalForm("section_id"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+
+
+			<input type="submit" value="検索">
+		}
 </DIV>
 
 <DIV id=rank>
+
+	<h3>検索結果</h3>
+
+	if(List.isEmpty()){
+	一致は一件もありませんでした
+	}else{
+
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
+
+
+
 				<tr>
 					<th>ランキング</th>
 					<th>名前</th>
@@ -51,15 +65,18 @@
 				</tr>
 			</thead>
 			<tbody>
+	for(t <- List){
 				<tr>
-					<th>1位</th>
-					<th>name</th>
-					<th>totalhelp</th>
-					<th>goodcount</th>
-					<th>content</th>
+					<td>順位</td>
+					<td>t.user</td>
+					<td>t.cards</td>
+					<td>GoodCount</td>
+					<td>t.helpText</td>
 				</tr>
+			}
 			</tbody>
 		</table>
+	}
 
 </DIV>
 
