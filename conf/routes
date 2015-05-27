@@ -32,6 +32,7 @@ GET		/send						controllers.Send.index()
 POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
+POST	/mydata						controllers.Mydata.delete()
 
 GET		/managebbs					controllers.ManageBbs.index()
 
