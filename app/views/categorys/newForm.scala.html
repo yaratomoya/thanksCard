@@ -1,0 +1,70 @@
+@(categoryForm: Form[HelpCategory])
+@import helper._
+
+<html>
+<head>
+
+<style>
+
+.manage{border:1px solid #dcdcdc;
+		margin:10px;
+		}
+
+</style>
+
+</head>
+
+	<body>
+	@common("カテゴリ登録画面"){
+
+		<a href="@routes.Categorys.index()">カテゴリ一覧</a>
+		<a href="@routes.Categorys.newCategory()">カテゴリ登録</a>
+
+
+
+		<h1>カテゴリ登録</h1>
+
+<div class = "manage">
+
+		<h2>新カテゴリの作成</h2>
+
+		@form(routes.Categorys.createCategory()){
+			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
+			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
+
+			<input type="submit" value="登録">
+		}
+</div>
+
+
+		<h1>カテゴリ名変更</h1>
+<div class = "manage">
+
+		<h2>変更するカテゴリ名</h2>
+
+		@form(routes.Categorys.updateCategory()){
+			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
+			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
+
+			<h2>変更後</h2>
+			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
+
+			<input type="submit" value="変更">
+		}
+</div>
+
+		<h1>カテゴリ削除</h1>
+<div class = "manage">
+
+		<h2>削除</h2>
+
+		@form(routes.Sections.deleteSection()){
+			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
+
+			<input type="submit" value="削除">
+		}
+</div>
+
+	}
+	</body>
+</html>
