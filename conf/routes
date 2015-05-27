@@ -35,7 +35,9 @@ GET 	/send/new					controllers.Send.create()
 POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
+POST	/mydata						controllers.Mydata.delete()
 GET		/mydata/new					controllers.Mydata.popup()
+
 
 GET		/managebbs					controllers.ManageBbs.index()
 
