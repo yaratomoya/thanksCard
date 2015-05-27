@@ -23,9 +23,11 @@ GET		/bbs						controllers.Bbs.index()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 
 GET		/send						controllers.Send.index()
+GET 	/send/new					controllers.Send.create()
 POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
+GET		/mydata/new					controllers.Mydata.popup()
 
 GET		/managebbs					controllers.ManageBbs.index()
 
