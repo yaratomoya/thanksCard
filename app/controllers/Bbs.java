@@ -10,7 +10,15 @@ public class Bbs extends Controller {
 	public static Calendar cal=Calendar.getInstance();
 
     public static Result index() {
-    	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", "%05%").findList();
+    	int th=cal.get(Calendar.MONTH)+1;
+    	String l=String.valueOf(th);
+    	String la;
+    	if(th<10){
+    		la="%0"+l+"%";
+    	}else{
+    		la="%"+l+"%";
+    	}
+    	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
         return ok(index.render(thisMonthCard));
     }
 
@@ -22,8 +30,20 @@ public class Bbs extends Controller {
 
 
     public static Result lastMonth() {
-    	//String last="%" + cal.add(Calendar.MONTH, -1) + "%";
-    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", "%04%").findList();
+    	int last=cal.get(Calendar.MONTH);
+    	int year=cal.get(Calendar.YEAR)-1;
+    	String l=String.valueOf(last);
+    	String y=String.valueOf(year);
+    	String la;
+    	if(last==1){
+    		la=y+"-"+l+"%";
+    	}
+    	if(last<10){
+    		la="%0"+l+"%";
+    	}else{
+    		la="%"+l+"%";
+    	}
+    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
         return ok(lastMonth.render(lastMonthCard));
     }
 

@@ -97,18 +97,20 @@
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>date</th>
-					<th>section</th>
-					<th>name</th>
-					<th>category</th>
-					<th>helpText</th>
-					<th>thanksText</th>
-					<th>section</th>
-					<th>name</th>
-					<th>goodCount</th>
-					<th>btn</th>
-				</tr>
+				@for(c <- card){
+					<tr>
+						<th>@c.helpDate</th>
+						<th>@c.receive.section.sectionName</th>
+						<th>@c.receive.userName</th>
+						<th>@c.category.categoryName</th>
+						<th>@c.helpText</th>
+						<th>@c.thanksText</th>
+						<th>@c.send.section.sectionName</th>
+						<th>@c.send.userName</th>
+						<th>goodCount</th>
+						<th>btn</th>
+					</tr>
+				}
 			</tbody>
 		</table>
 
