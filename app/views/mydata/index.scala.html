@@ -1,4 +1,6 @@
+@(mydataForm: Form[Mydata])
 
+@import helper._
 
 <html>
 
@@ -28,31 +30,41 @@
 			<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th>投稿日</th>
-					<th>部署</th>
+					<th rowspan="2">投稿日</th>
+					<th colspan="3">感謝してくれた人</th>
+					<th rowspan="2">カテゴリ</th>
+					<th rowspan="2">してもらったこと</th>
+					<th rowspan="2">感謝の言葉</th>
+					<th rowspan="2">削除チェック</th>
+
+				</tr>
+				<tr>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>カテゴリ</th>
-					<th>してもらったこと</th>
-					<th>感謝の言葉</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>date</th>
-					<th>section</th>
-					<th>name</th>
-					<th>category</th>
-					<th>helpText</th>
-					<th>thanksText</th>
-					<th><input type="checkbox" name="check" value=""></th>
-
+			@form(routes.Mydata.delete()){
+			for(c <- card){
+				<tr style="height:50px;">
+					<td>c.sendDay</td>
+					<td colspan="2">c.sectionName</td>
+					<td>c.send</td>
+					<td>c.category</td>
+					<td>c.helpText</td>
+					<td>c.thanksText</td>
+					<td>@checkbox(mydataForm("delete"), '_label -> "")</td>
 				</tr>
+				}
 			</tbody>
 		</table>
 
 
-		<input style="margin-left:500px" type="button" name="delete"
+		<input style="margin-left:500px" type="submit" name="delete"
 		onclick="window.open('@routes.Mydata.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" value="削除依頼">
+
+		}
+		<!>
 </DIV>
 
 	<DIV class="list">
@@ -62,23 +74,32 @@
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th>登校日</th>
-					<th>部署</th>
+					<th rowspan="2">投稿日</th>
+					<th colspan="3">感謝した人</th>
+					<th rowspan="2">カテゴリ</th>
+					<th rowspan="2">してもらったこと</th>
+					<th rowspan="2">感謝の言葉</th>
+
+
+				</tr>
+				<tr>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>カテゴリ</th>
-					<th>してもらったこと</th>
-					<th>感謝の言葉</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>date</th>
-					<th>section</th>
-					<th>name</th>
-					<th>category</th>
-					<th>helpText</th>
-					<th>thanksText</th>
-			</tr>
+
+			for(c <- card){
+				<tr style="height:50px;">
+					<td>c.sendDay</td>
+					<td colspan="2">c.sectionName</td>
+					<td>c.receive</td>
+					<td>c.category</td>
+					<td>c.helpText</td>
+					<td>c.thanksText</td>
+				</tr>
+				}
+
 			</tbody>
 		</table>
 
