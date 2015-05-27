@@ -35,4 +35,8 @@ public class Users extends Controller{
 		return ok("update");
 	}
 
+
+	public static Result deleteUser(){
+		return ok("delete");
+	}
 }
