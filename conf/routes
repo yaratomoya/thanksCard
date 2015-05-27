@@ -7,10 +7,14 @@ GET     /                           controllers.Application.index()
 GET		/users						controllers.Users.index()
 GET		/users/new					controllers.Users.newUser()
 POST	/users						controllers.Users.createUser()
-POST	/users/up						controllers.Users.updateUser()
+POST	/users/up					controllers.Users.updateUser()
+POST	/users/delete				controllers.Users.deleteUser()
+
 GET		/sections					controllers.Sections.index()
 GET		/sections/new				controllers.Sections.newSection()
 POST	/sections					controllers.Sections.createSection()
+
+GET		/categorys					controllers.Categorys.index()
 
 GET		/login						controllers.Login.index()
 POST    /login						controllers.Login.authenticate()
