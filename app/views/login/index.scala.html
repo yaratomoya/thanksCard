@@ -21,6 +21,11 @@
 			@inputPassword(loginForm("userPassword"),'_label -> "パスワード")
 			<input type="submit" value="ログイン">
 		}
+		@if(loginForm.hasGlobalErrors) {
+        <p class="error">
+            @loginForm.globalError.message
+        </p>
+		}
 	}
 </DIV>
 
