@@ -14,6 +14,13 @@ public class Bbs extends Controller {
         return ok(index.render(thisMonthCard));
     }
 
+
+    public static Result popup() {
+    	List<ThanksCard> card=ThanksCard.find.all();
+        return ok("日付 感謝された人（部署・名前）ヘルプカテゴリ してもらったこと 感謝の言葉 感謝された人（部署・名前）ＯＫボタン");
+    }
+
+
     public static Result lastMonth() {
     	//String last="%" + cal.add(Calendar.MONTH, -1) + "%";
     	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", "%04%").findList();
