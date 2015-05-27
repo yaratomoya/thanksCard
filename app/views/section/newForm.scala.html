@@ -18,6 +18,10 @@
 	<body>
 	@common("部署登録画面"){
 
+		<a href="@routes.Sections.index()">部署一覧</a>
+		<a href="@routes.Sections.newSection()">部署登録</a>
+
+
 		<h1>部署登録</h1>
 
 <div class = "manage">
@@ -38,7 +42,7 @@
 
 		<h2>変更する部署</h2>
 
-		@form(routes.Sections.createSection()){
+		@form(routes.Sections.updateSection()){
 			@inputText(sectionForm("sectionID"),'_label -> "部署ID")
 			@inputText(sectionForm("sectionName"),'_label -> "部署名")
 
@@ -55,7 +59,7 @@
 
 		<h2>削除</h2>
 
-		@form(routes.Sections.createSection()){
+		@form(routes.Sections.deleteSection()){
 			@inputText(sectionForm("sectionID"),'_label -> "部署ID")
 
 			<input type="submit" value="削除">

@@ -32,4 +32,15 @@ public class Sections extends Controller{
 		Section.create(section.sectionName);
 		return redirect(routes.Sections.index());
 	}
+
+	public static Result updateSection(){
+		return ok("update");
+	}
+
+
+	public static Result deleteSection(){
+		return ok("delete");
+	}
+
+
 }

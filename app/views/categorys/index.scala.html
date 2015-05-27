@@ -1,0 +1,29 @@
+@(categoryList: List[HelpCategory])
+
+<html>
+	<body>
+	@common("カテゴリ一覧ページ"){
+		<h1>カテゴリ一覧</h1>
+
+		<a href="@routes.Categorys.index()">カテゴリ一覧</a>
+		<a href="@routes.Categorys.newCategory()">カテゴリ登録</a>
+
+		<table>
+			<thead>
+				<tr>
+					<th>ID</th>
+					<th>カテゴリ名</th>
+				</tr>
+			</thead>
+			<tbody>
+			@for(c <- categoryList){
+				<tr>
+					<td>@c.categoryID</td>
+					<td>@c.categoryName</td>
+				</tr>
+			}
+			</tbody>
+		</table>
+	}
+	</body>
+</html>
