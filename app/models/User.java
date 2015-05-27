@@ -8,6 +8,7 @@ import java.util.*;
 public class User extends Model{
 	@Id
 	public Long userID;
+	public String userCD;
 	public String userName;
 	public String userPassword;
 	public Integer permission;
@@ -18,9 +19,9 @@ public class User extends Model{
 		Long.class, User.class
 	);
 
-	public static Boolean authenticate(String username, String password){
-		User user=find.where().eq("name", username).findUnique();
-		return (user != null && user.userPassword.equals(password));
+	public static Boolean authenticate(String userCD, String userPassword){
+		User user=find.where().eq("userCD", userCD).findUnique();
+		return (user != null && user.userPassword.equals(userPassword));
 	}
 
 	public static Long create(String username, String password, Integer permission){

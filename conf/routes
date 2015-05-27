@@ -14,6 +14,7 @@ POST	/sections					controllers.Sections.createSection()
 
 GET		/login						controllers.Login.index()
 POST    /login						controllers.Login.authenticate()
+GET		/logout						controllers.Login.logout()
 
 GET		/bbs						controllers.Bbs.index()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
