@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.*;
 
+import controllers.Login.AuthLogin;
 import models.HelpCategory;
 import models.Section;
 import models.ThanksCard;
@@ -13,7 +14,7 @@ import views.html.bbs.*;
 
 public class Bbs extends Controller {
 	public static Calendar cal=Calendar.getInstance();
-
+	public static Form<ThanksCard> bbsForm=Form.form(ThanksCard.class);
 
     public static Result index() {
     	int th=cal.get(Calendar.MONTH)+1;
@@ -51,7 +52,7 @@ public class Bbs extends Controller {
     	}
 
     	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
-    	Form<ThanksCard> bbsForm=Form.form(ThanksCard.class);
+
         return ok(index.render(thisMonthCard,bbsForm,reSections,reName,seSections,seName,cate));
     }
 
@@ -81,8 +82,14 @@ public class Bbs extends Controller {
     }
 
     public static Result search() {
-
-        return ok("検索結果");
+    	Form<ThanksCard> form=bbsForm.bindFromRequest();
+		ThanksCard ca=form.get();
+		//String day=ca.helpDate.toString();
+		//day="%"+day+"%";
+		List<ThanksCard> catSearch=ThanksCard.find.where().eq("category.categoryID", ca.category.categoryID).findList();
+		List<ThanksCard> dateSearch=ThanksCard.find.where().eq("helpDate", ca.helpDate).findList();
+		List<ThanksCard> recSecSearch=ThanksCard.find.where().eq("receive.userID", ca.receive.userID).findList();
+        return ok(search.render(catSearch, dateSearch, recSecSearch));
     }
 
 }

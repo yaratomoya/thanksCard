@@ -34,18 +34,18 @@
 	<DIV id=search>
 	<h2>検索</h2>
 
-		@form(routes.Bbs.search){
+		@form(routes.Bbs.search()){
 
 		<h3>感謝された人</h3>
-			@select(bbsForm("receive.section.sectionName"),options(reSections), '_default -> "-- 部署 --", '_label -> "部署")
-			@select(bbsForm("receive.userName"),options(reName), '_default -> "-- 名前 --", '_label -> "")
+			@select(bbsForm("receive.section.sectionID"),options(reSections), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(bbsForm("receive.userID"),options(reName), '_default -> "-- 名前 --", '_label -> "")
 		<h3>感謝した人</h3>
-			@select(bbsForm("send.section.sectionName"),options(seSections), '_default -> "-- 部署 --", '_label -> "")
-			@select(bbsForm("send.userName"),options(seName), '_default -> "-- 名前 --", '_label -> "")
+			@select(bbsForm("send.section.sectionID"),options(seSections), '_default -> "-- 部署 --", '_label -> "")
+			@select(bbsForm("send.userID"),options(seName), '_default -> "-- 名前 --", '_label -> "")
 		<h3>日付</h3>
 			@inputDate(bbsForm("helpDate"), '_label -> "")
 		<h3>カテゴリ</h3>
-			@select(bbsForm("category.categoryName"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
+			@select(bbsForm("category.categoryID"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
 
 			<input type="submit" value="検索" class="btn">
 
