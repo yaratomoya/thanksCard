@@ -1,5 +1,4 @@
-@(card: List[ThanksCard])(bbsForm: Form[Bbs])
-
+@(card: List[ThanksCard])(bbsForm: Form[ThanksCard])(reSections: HashMap[String, String])(reName: HashMap[String, String])(seSections: HashMap[String, String])(seName: HashMap[String, String])(category: HashMap[String, String])
 @import helper._
 
 <html>
@@ -38,15 +37,15 @@
 		@form(routes.Bbs.search){
 
 		<h3>感謝された人</h3>
-			@select(bbsForm("receiveSection"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "")
-			@select(bbsForm("receiveName"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "")
+			@select(bbsForm("receive.section.sectionName"),options(reSections), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(bbsForm("receive.userName"),options(reName), '_default -> "-- 名前 --", '_label -> "")
 		<h3>感謝した人</h3>
-			@select(bbsForm("sendSection"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "")
-			@select(bbsForm("sendName"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "")
+			@select(bbsForm("send.section.sectionName"),options(seSections), '_default -> "-- 部署 --", '_label -> "")
+			@select(bbsForm("send.userName"),options(seName), '_default -> "-- 名前 --", '_label -> "")
 		<h3>日付</h3>
-			@inputDate(bbsForm("date"), '_label -> "")
+			@inputDate(bbsForm("helpDate"), '_label -> "")
 		<h3>カテゴリ</h3>
-			@select(bbsForm("category"),options("debag" -> "デバッグ", "clean" -> "環境整備", "other" -> "その他"), '_default -> "-- カテゴリ --", '_label -> "")
+			@select(bbsForm("category.categoryName"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
 
 			<input type="submit" value="検索" class="btn">
 

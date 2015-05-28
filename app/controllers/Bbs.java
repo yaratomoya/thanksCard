@@ -2,7 +2,10 @@ package controllers;
 
 import java.util.*;
 
+import models.HelpCategory;
+import models.Section;
 import models.ThanksCard;
+import models.User;
 import play.*;
 import play.data.Form;
 import play.mvc.*;
@@ -21,9 +24,35 @@ public class Bbs extends Controller {
     	}else{
     		la="%"+l+"%";
     	}
+
+    	HashMap<String, String> reSections=new HashMap<>();
+    	for(Section section : Section.find.all()){
+    		reSections.put(section.sectionID.toString(), section.sectionName);
+    	}
+
+    	HashMap<String, String> reName=new HashMap<>();
+    	for(User user : User.find.all()){
+    		reName.put(user.userID.toString(), user.userName);
+    	}
+
+    	HashMap<String, String> seSections=new HashMap<>();
+    	for(Section section : Section.find.all()){
+    		seSections.put(section.sectionID.toString(), section.sectionName);
+    	}
+
+    	HashMap<String, String> seName=new HashMap<>();
+    	for(User user : User.find.all()){
+    		seName.put(user.userID.toString(), user.userName);
+    	}
+
+    	HashMap<String, String> cate=new HashMap<>();
+    	for(HelpCategory category : HelpCategory.find.all()){
+    		cate.put(category.categoryID.toString(), category.categoryName);
+    	}
+
     	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
-    	Form<Bbs> bbsForm=Form.form(Bbs.class);
-        return ok(index.render(thisMonthCard,bbsForm));
+    	Form<ThanksCard> bbsForm=Form.form(ThanksCard.class);
+        return ok(index.render(thisMonthCard,bbsForm,reSections,reName,seSections,seName,cate));
     }
 
 
