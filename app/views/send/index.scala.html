@@ -1,4 +1,4 @@
-@(sendForm: Form[Send])
+@(sendForm: Form[ThanksCard])
 
 @import helper._
 
@@ -47,12 +47,12 @@
 	<DIV id =form>
 	@form(routes.Send.create()){
 
-			@select(sendForm("receptionSection"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "")
-			@select(sendForm("receptionName"),options("a" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "")
+			@select(sendForm("receptionSection"),options("1" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "")
+			@select(sendForm("receptionName"),options("1" -> "Aさん", "B" -> "Bさん"), '_default -> "-- 名前 --", '_label -> "")
 			@textarea(sendForm("helpText"), 'cols -> 50,  'rows -> 6, '_label -> "")
 			@textarea(sendForm("thanksText"), 'cols -> 50,  'rows -> 6, '_label -> "")
 			@inputDate(sendForm("date"), '_label -> "")
-			@select(sendForm("category"),options("debag" -> "デバッグ", "clean" -> "環境整備", "other" -> "その他"), '_default -> "-- カテゴリ --", '_label -> "")
+			@select(sendForm("category"),options("1" -> "デバッグ", "clean" -> "環境整備", "other" -> "その他"), '_default -> "-- カテゴリ --", '_label -> "")
 
 
 
