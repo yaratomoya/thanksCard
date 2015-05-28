@@ -1,16 +1,20 @@
 package controllers;
 
+import java.util.List;
+
+import models.ThanksCard;
 import play.*;
 import play.data.Form;
 import play.mvc.*;
-
 import views.html.mydata.*;
 
 public class Mydata extends Controller {
-	public static Form<Mydata> mydataForm=Form.form(Mydata.class);
+	//public static
 
     public static Result index() {
-        return ok(index.render(mydataForm));
+    	Form<Mydata> mydataForm=Form.form(Mydata.class);
+    	List<ThanksCard> card=ThanksCard.find.where().findList();
+        return ok(index.render(mydataForm,card));
     }
 
     public static Result delete() {
