@@ -1,13 +1,16 @@
 package controllers;
 
 import java.util.*;
+
 import models.ThanksCard;
 import play.*;
+import play.data.Form;
 import play.mvc.*;
 import views.html.bbs.*;
 
 public class Bbs extends Controller {
 	public static Calendar cal=Calendar.getInstance();
+
 
     public static Result index() {
     	int th=cal.get(Calendar.MONTH)+1;
@@ -19,7 +22,8 @@ public class Bbs extends Controller {
     		la="%"+l+"%";
     	}
     	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
-        return ok(index.render(thisMonthCard));
+    	Form<Bbs> bbsForm=Form.form(Bbs.class);
+        return ok(index.render(thisMonthCard,bbsForm));
     }
 
 
@@ -45,6 +49,11 @@ public class Bbs extends Controller {
     	}
     	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
         return ok(lastMonth.render(lastMonthCard));
+    }
+
+    public static Result search() {
+
+        return ok("検索結果");
     }
 
 }
