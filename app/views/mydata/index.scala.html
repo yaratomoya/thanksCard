@@ -1,4 +1,4 @@
-@(mydataForm: Form[Mydata])
+@(mydataForm: Form[Mydata])(card:List[ThanksCard])
 
 @import helper._
 
@@ -45,14 +45,14 @@
 			</thead>
 			<tbody>
 			@form(routes.Mydata.delete()){
-			for(c <- card){
+			@for(c <- card){
 				<tr style="height:50px;">
-					<td>c.sendDay</td>
-					<td colspan="2">c.sectionName</td>
-					<td>c.send</td>
-					<td>c.category</td>
-					<td>c.helpText</td>
-					<td>c.thanksText</td>
+					<td>@c.sendDay</td>
+					<td colspan="2">@c.send.section.sectionName</td>
+					<td>@c.send.userName</td>
+					<td>@c.category.categoryName</td>
+					<td>@c.helpText</td>
+					<td>@c.thanksText</td>
 					<td>@checkbox(mydataForm("delete"), '_label -> "")</td>
 				</tr>
 				}
@@ -89,14 +89,14 @@
 			</thead>
 			<tbody>
 
-			for(c <- card){
+			@for(c <- card){
 				<tr style="height:50px;">
-					<td>c.sendDay</td>
-					<td colspan="2">c.sectionName</td>
-					<td>c.receive</td>
-					<td>c.category</td>
-					<td>c.helpText</td>
-					<td>c.thanksText</td>
+					<td>@c.sendDay</td>
+					<td colspan="2">@c.receive.section.sectionName</td>
+					<td>@c.receive.userName</td>
+					<td>@c.category.categoryName</td>
+					<td>@c.helpText</td>
+					<td>@c.thanksText</td>
 				</tr>
 				}
 
