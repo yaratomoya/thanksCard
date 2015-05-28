@@ -32,7 +32,7 @@ GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 POST	/bbs						controllers.Bbs.search()
 
 GET		/send						controllers.Send.index()
-GET 	/send/new					controllers.Send.create()
+#GET 	/send/new					controllers.Send.create()
 POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
