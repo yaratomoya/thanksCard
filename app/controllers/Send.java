@@ -2,7 +2,7 @@ package controllers;
 
 import java.util.*;
 
-import models.ThanksCard;
+import models.*;
 import play.data.Form;
 import play.mvc.*;
 import views.html.send.*;
@@ -15,7 +15,24 @@ public class Send extends Controller {
 	public static Form<ThanksCard> sendForm2=Form.form(ThanksCard.class);
 
     public static Result index() {
-        return ok(index.render(sendForm2));
+
+    	HashMap<String, String> reSections=new HashMap<>();
+        for(Section section : Section.find.all()){
+            reSections.put(section.sectionID.toString(), section.sectionName);
+        }
+
+        HashMap<String, String> reName=new HashMap<>();
+        for(User user : User.find.all()){
+        	reName.put(user.userID.toString(), user.userName);
+        }
+
+        HashMap<String, String> cate=new HashMap<>();
+        	for(HelpCategory category : HelpCategory.find.all()){
+        	cate.put(category.categoryID.toString(), category.categoryName);
+        }
+
+ //return ok(index.render(thisMonthCard,bbsForm,reSections));
+        return ok(index.render(sendForm2,reSections,reName,cate));
     }
 
     public static Result create() {
