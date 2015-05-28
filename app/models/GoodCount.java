@@ -9,4 +9,10 @@ public class GoodCount extends Model{
 	public User user;
 	@ManyToOne
 	public ThanksCard cards;
+
+	public static Finder<Long,GoodCount> find=new Finder<Long,GoodCount>(
+			Long.class, GoodCount.class
+	);
+
+
 }

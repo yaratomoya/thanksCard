@@ -42,12 +42,12 @@ public class Login extends Controller {
 		}else{
 			AuthLogin login=form.get();
 			session("login", login.userCD);
-			return ok("ようこそ" + login.userName + "さん!!");
+			return redirect(routes.Bbs.index());
 		}
 	}
 
 	public static Result logout(){
 		session().clear();
-		return redirect(routes.Login.index());
+		return ok(index.render(loginForm));
 	}
 }
