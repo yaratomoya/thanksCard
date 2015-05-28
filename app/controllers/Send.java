@@ -49,7 +49,9 @@ public class Send extends Controller {
 
     	long cateID = Integer.parseInt(params.get("category")[0]);
 
-    	long sendID = 2;
+    	List<User> sendUser = User.find.where().eq("USER_CD", session("login")).findList();
+    	User sendID2 = sendUser.get(0);
+    	long sendID = sendID2.userID;
 
     	String helpdate = params.get("date")[0];
 
