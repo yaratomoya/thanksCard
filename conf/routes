@@ -29,6 +29,7 @@ GET		/logout						controllers.Login.logout()
 GET		/bbs						controllers.Bbs.index()
 GET		/bbs/pop					controllers.Bbs.popup()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
+POST	/bbs						controllers.Bbs.search()
 
 GET		/send						controllers.Send.index()
 GET 	/send/new					controllers.Send.create()
