@@ -92,4 +92,9 @@ public class Bbs extends Controller {
         return ok(search.render(catSearch, dateSearch, recSecSearch));
     }
 
+    public static Result good(){
+
+    	return TODO;
+    }
+
 }
