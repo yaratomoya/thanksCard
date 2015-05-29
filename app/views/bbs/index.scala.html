@@ -69,8 +69,7 @@
 					<th>部署</th>
 					<th>名前</th>
 					<th>いいね！</th>
-					<th><input type = "button"  value = "詳細"
-					onclick="window.open('@routes.Bbs.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" />
+					<th>詳細
 					</th>
 				</tr>
 			</thead>
@@ -86,7 +85,8 @@
 						<th>@c.send.section.sectionName</th>
 						<th>@c.send.userName</th>
 						<th>@form(routes.Bbs.good()){<input type="button" value="いいね！"/>}</th>
-						<th>btn</th>
+						<th>@form(routes.Bbs.detail()){<input type = "button"  value = "詳細"
+					onclick="window.open('@routes.Bbs.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" />}</th>
 					</tr>
 				}
 			</tbody>
