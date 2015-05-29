@@ -44,7 +44,7 @@
 				</tr>
 			</thead>
 			<tbody>
-			@form(routes.Mydata.delete()){
+
 			@for(re <- reCard){
 				<tr style="height:50px;">
 					<td>@re.sendDay</td>
@@ -53,17 +53,16 @@
 					<td>@re.category.categoryName</td>
 					<td>@re.helpText</td>
 					<td>@re.thanksText</td>
-					<td>@checkbox(mydataForm("deleteRequest"), '_label -> "")</td>
+					<td>@form(routes.Mydata.delete(re.cardID)){
+					<input type="submit" name="delete"
+					onclick="window.open('@routes.Mydata.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ;" value="削除依頼">
+					}</td>
 				</tr>
 				}
 			</tbody>
 		</table>
 
 
-		<input style="margin-left:500px" type="submit" name="delete"
-		onclick="window.open('@routes.Mydata.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" value="削除依頼">
-
-		}
 		<!>
 </DIV>
 

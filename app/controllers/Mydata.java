@@ -16,8 +16,14 @@ public class Mydata extends Controller {
         return ok(index.render(mydataForm,reCard,seCard));
     }
 
-    public static Result delete() {
-        return ok("感謝カード送信完了");
+    public static Result delete(Long cardID) {
+
+    	ThanksCard card = ThanksCard.find.byId(cardID);
+    	card.deleteRequest = 1;
+    	card.update();
+
+        return redirect(routes.Mydata.index());
+
     }
 
     public static Result popup() {

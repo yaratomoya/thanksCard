@@ -39,7 +39,7 @@ GET		/send						controllers.Send.index()
 POST	/send						controllers.Send.create()
 
 GET		/mydata						controllers.Mydata.index()
-POST	/mydata						controllers.Mydata.delete()
+POST	/mydata/:ID					controllers.Mydata.delete(ID: Long)
 GET		/mydata/new					controllers.Mydata.popup()
 
 
