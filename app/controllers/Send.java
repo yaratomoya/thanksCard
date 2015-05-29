@@ -5,14 +5,16 @@ import java.util.*;
 import models.*;
 import play.data.Form;
 import play.mvc.*;
+import views.html.defaultpages.error;
 import views.html.send.*;
+import views.html.users.newForm;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 
 public class Send extends Controller {
-	public static Form<Send> sendForm=Form.form(Send.class);
-	public static Form<ThanksCard> sendForm2=Form.form(ThanksCard.class);
+	//public static Form<Send> sendForm=Form.form(Send.class);
+	public static Form<ThanksCard> sendForm=Form.form(ThanksCard.class);
 
     public static Result index() {
 
@@ -31,41 +33,24 @@ public class Send extends Controller {
         	cate.put(category.categoryID.toString(), category.categoryName);
         }
 
- //return ok(index.render(thisMonthCard,bbsForm,reSections));
-        return ok(index.render(sendForm2,reSections,reName,cate));
+        return ok(index.render(sendForm,reSections,reName,cate));
     }
 
     public static Result create() {
-    	Map<String, String[]> params = request().body().asFormUrlEncoded();
+    	Form<ThanksCard> form=sendForm.bindFromRequest();
 
-    	SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd");
-    	ThanksCard card = new ThanksCard();
+//		if(form.hasErrors()){
+//			return badRequest(error.render(form));
+//		}
 
-    	card.helpText = params.get("helpText")[0];
+		ThanksCard card=form.get();
+		User receive=User.find.where().eq("userName", card.receive.userName).findUnique();
+		User send=User.find.where().eq("userName", session("login")).findUnique();
+		HelpCategory cate=HelpCategory.find.where().eq("categoryName", card.category.categoryName).findUnique();
+		Date sendDay=new Date();
 
-    	card.thanksText = params.get("thanksText")[0];
-
-    	long recUser =  Integer.parseInt(params.get("receptionName")[0]);
-
-    	long cateID = Integer.parseInt(params.get("category")[0]);
-
-    	List<User> sendUser = User.find.where().eq("USER_CD", session("login")).findList();
-    	User sendID2 = sendUser.get(0);
-    	long sendID = sendID2.userID;
-
-    	String helpdate = params.get("date")[0];
-
-    	Date send_Date = new Date();
-
-    	Date date = null;
-		try {
-			date = format.parse(helpdate);
-		} catch (ParseException e) {
-			e.printStackTrace();
-		}
-    	card.helpDate = date;
-
-    	ThanksCard.create(card.helpText, card.thanksText, recUser,cateID, card.helpDate,sendID, send_Date);
+		ThanksCard.create(card.helpText, card.thanksText, receive, cate, card.helpDate,
+				send, sendDay);
         return redirect(routes.Send.index());
     }
 
