@@ -3,6 +3,7 @@ package controllers;
 import java.util.*;
 
 import controllers.Login.AuthLogin;
+import models.GoodCount;
 import models.HelpCategory;
 import models.Section;
 import models.ThanksCard;
@@ -92,10 +93,24 @@ public class Bbs extends Controller {
         return ok(search.render(catSearch, dateSearch, recSecSearch));
     }
 
-    public static Result good(){
+    public static Result good(Long cardID){
 
-    	return TODO;
+    	GoodCount count = new GoodCount();
+    	ThanksCard card = ThanksCard.find.byId(cardID);
+    	User user = User.find.where().eq("userCD", session("login")).findUnique();
+    	count.cards = card;
+    	count.user = user;
+		GoodCount delcount = GoodCount.find.where().eq("cards.cardID", cardID).eq("user.userID", user.userID).findUnique();
+
+
+    	if(delcount != null){
+    		delcount.delete();
+    	}else{
+    		count.save();
+    	}
+    	return ok(popup.render(cardID));
     }
+
 
     public static Result detail(){
 

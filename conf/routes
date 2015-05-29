@@ -31,7 +31,7 @@ GET		/bbs/pop					controllers.Bbs.popup()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 GET		/bbs/search					controllers.Bbs.search()
 POST	/bbs						controllers.Bbs.search()
-POST	/bbs						controllers.Bbs.good()
+POST	/bbs/:ID					controllers.Bbs.good(ID: Long)
 POST	/bbs						controllers.Bbs.detail()
 
 GET		/send						controllers.Send.index()

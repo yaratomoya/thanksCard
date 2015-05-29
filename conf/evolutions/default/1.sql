@@ -4,8 +4,10 @@
 # --- !Ups
 
 create table good_count (
+  count_id                  bigint not null,
   user_user_id              bigint,
-  cards_card_id             bigint)
+  cards_card_id             bigint,
+  constraint pk_good_count primary key (count_id))
 ;
 
 create table help_category (
@@ -42,6 +44,8 @@ create table user (
   section_section_id        bigint,
   constraint pk_user primary key (user_id))
 ;
+
+create sequence good_count_seq;
 
 create sequence help_category_seq;
 
@@ -81,6 +85,8 @@ drop table if exists thanks_card;
 drop table if exists user;
 
 SET REFERENTIAL_INTEGRITY TRUE;
+
+drop sequence if exists good_count_seq;
 
 drop sequence if exists help_category_seq;
 

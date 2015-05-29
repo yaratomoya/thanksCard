@@ -1,5 +1,5 @@
 @(card: List[ThanksCard])
-
+@import helper._
 <html>
 
 <head>
@@ -107,8 +107,9 @@
 						<th>@c.thanksText</th>
 						<th>@c.send.section.sectionName</th>
 						<th>@c.send.userName</th>
-						<th>goodCount</th>
-						<th>btn</th>
+						<th>@form(routes.Bbs.good(c.cardID)){<input type="submit" value="いいね！"/>}</th>
+						<th>@form(routes.Bbs.popup()){<input type = "button"  value = "詳細"
+					onclick="window.open('@routes.Bbs.popup()','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" />}</th>
 					</tr>
 				}
 			</tbody>
