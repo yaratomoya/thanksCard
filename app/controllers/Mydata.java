@@ -9,12 +9,11 @@ import play.mvc.*;
 import views.html.mydata.*;
 
 public class Mydata extends Controller {
-	//public static
-
     public static Result index() {
-    	Form<Mydata> mydataForm=Form.form(Mydata.class);
-    	List<ThanksCard> card=ThanksCard.find.where().findList();
-        return ok(index.render(mydataForm,card));
+    	Form<ThanksCard> mydataForm=Form.form(ThanksCard.class);
+    	List<ThanksCard> reCard=ThanksCard.find.where().eq("receive.userCD", session("login")).findList();
+    	List<ThanksCard> seCard=ThanksCard.find.where().eq("send.userCD", session("login")).findList();
+        return ok(index.render(mydataForm,reCard,seCard));
     }
 
     public static Result delete() {
