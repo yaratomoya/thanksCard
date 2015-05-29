@@ -108,7 +108,7 @@ public class Bbs extends Controller {
     	}else{
     		count.save();
     	}
-    	return ok(popup.render(cardID));
+    	return redirect(routes.Bbs.index());
     }
 
 
