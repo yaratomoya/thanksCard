@@ -5,6 +5,8 @@ import play.db.ebean.Model;
 
 @Entity
 public class GoodCount extends Model{
+	@Id
+	public Long countID;
 	@ManyToOne
 	public User user;
 	@ManyToOne
