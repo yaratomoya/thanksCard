@@ -97,4 +97,9 @@ public class Bbs extends Controller {
     	return TODO;
     }
 
+    public static Result detail(){
+
+    	return TODO;
+    }
+
 }
