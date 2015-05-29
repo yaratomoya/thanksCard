@@ -31,6 +31,7 @@ GET		/bbs/pop					controllers.Bbs.popup()
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 GET		/bbs/search					controllers.Bbs.search()
 POST	/bbs						controllers.Bbs.search()
+POST	/bbs						controllers.Bbs.good()
 
 GET		/send						controllers.Send.index()
 #GET 	/send/new					controllers.Send.create()
