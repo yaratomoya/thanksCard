@@ -1,4 +1,5 @@
-@(totalForm: Form[Total])
+@(totalForm: Form[ThanksCard])(reSections: HashMap[String, String])(card: List[ThanksCard])(user: List[User])
+@(count: long)
 
 @import helper._
 
@@ -36,8 +37,8 @@
 
 		@form(routes.Total.search()){
 
-			@select(totalForm("section_id"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
-
+			@*@select(totalForm("receive.section.sectionName"),options(reSections), '_default -> "-- 部署 --", '_label -> "")*@
+			@select(totalForm("sectionfind"),options(reSections), '_default -> "-- 部署 --", '_label -> "")
 
 			<input type="submit" value="検索">
 		}
@@ -47,7 +48,7 @@
 
 	<h3>検索結果</h3>
 
-	if(List.isEmpty()){
+	@if(card.isEmpty()){
 	一致は一件もありませんでした
 	}else{
 
@@ -65,13 +66,13 @@
 				</tr>
 			</thead>
 			<tbody>
-	for(t <- List){
+	@for(t <- card){
 				<tr>
 					<td>順位</td>
-					<td>t.user</td>
+					<td>@t.receive.userName</td>
 					<td>t.cards</td>
-					<td>GoodCount</td>
-					<td>t.helpText</td>
+					<td>@count</td>
+					<td>@t.helpText</td>
 				</tr>
 			}
 			</tbody>
