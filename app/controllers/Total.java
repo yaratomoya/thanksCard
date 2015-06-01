@@ -2,6 +2,7 @@ package controllers;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
@@ -24,7 +25,12 @@ public class Total extends Controller {
             reSections.put(section.sectionID.toString(), section.sectionName);
         }
         List<ThanksCard> dateSearch=ThanksCard.find.all();
-        return ok(index.render(totalForm,reSections,dateSearch,null));
+        List<User> user=User.find.all();
+        ArrayList<Integer> user2 = new ArrayList<Integer>();
+        user2.add(1);
+        user2.add(1);user2.add(1);
+        Iterator<Integer> it = user2.iterator();
+        return ok(index.render(totalForm,reSections,dateSearch,user,it));
     }
 
     public static Result search(){
@@ -36,17 +42,21 @@ public class Total extends Controller {
         Form<ThanksCard> form=totalForm.bindFromRequest();
         ThanksCard to = form.get();*/
         Map<String, String[]> params = request().body().asFormUrlEncoded();
-        ThanksCard card = new ThanksCard();
         long recID = Integer.parseInt(params.get("sectionfind")[0]);
-        //card.receive.section.sectionID = recID;
+
         List<ThanksCard> dateSearch=ThanksCard.find.where().eq("receive.section.sectionID", recID).findList();
         List<User> user=User.find.where().eq("section.sectionID", recID).findList();
 
-        ArrayList user2 = new ArrayList();
-        for(int i=0; i<user2.length; i++){
-        	user2[i]=ThanksCard.find.where().eq("receive.userID", user.get(i)).findRowCount();
+        User user3 = user.get(0);
+        ArrayList<Integer> user2 = new ArrayList<Integer>();
+        int kazu = 0;
+        for(int i=0; i<user.size(); i++){
+        	kazu = i;
+        	user3 = user.get(kazu);
+        	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).findRowCount());
         }
-        return ok(index.render(totalForm,reSections,dateSearch,user));
+        Iterator<Integer> it = user2.iterator();
+        return ok(index.render(totalForm,reSections,dateSearch,user,it));
     }
 
 }
