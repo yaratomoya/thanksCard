@@ -61,7 +61,19 @@ public class Bbs extends Controller {
     public static Result popup(Long cardID){
 
     	ThanksCard card = ThanksCard.find.byId(cardID);
-    	return ok(popup.render(card.cardID));
+    	//List<ThanksCard> ca=ThanksCard.find.where().eq("send.userName", card.send).findList();
+
+    	return ok(popup.render(
+    			card.cardID,
+    			card.helpDate,
+    			card.receive.section.sectionName,
+    			card.receive.userName,
+    			card.helpText,
+    			card.category.categoryName,
+    			card.thanksText,
+    			card.send.section.sectionName,
+    			card.send.userName
+    			));
     }
 
     public static Result lastMonth() {
