@@ -58,11 +58,11 @@ public class Bbs extends Controller {
     }
 
 
-    public static Result popup() {
-    	List<ThanksCard> card=ThanksCard.find.all();
-        return ok("日付 感謝された人（部署・名前）ヘルプカテゴリ してもらったこと 感謝の言葉 感謝された人（部署・名前）ＯＫボタン");
-    }
+    public static Result popup(Long cardID){
 
+    	ThanksCard card = ThanksCard.find.byId(cardID);
+    	return ok(popup.render(card.cardID));
+    }
 
     public static Result lastMonth() {
     	int last=cal.get(Calendar.MONTH);
