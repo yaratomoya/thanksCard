@@ -40,6 +40,7 @@ public class Total extends Controller {
 
         int[][] arr = new int[user.size()][2];
 
+        //ソート用の配列
         for(int i=0; i<user.size(); i++){
         	kazu = i;
         	user3 = user.get(kazu);
@@ -51,6 +52,7 @@ public class Total extends Controller {
         Arrays.sort(arr, comparator);
         user2.clear();
 
+        //ソートした値を代入
         for(int i=0; i<user.size(); i++){
         	String uid_st = String.valueOf(arr[i][1]);
         	long uid = Integer.parseInt(uid_st);
@@ -71,8 +73,15 @@ public class Total extends Controller {
             reSections.put(section.sectionID.toString(), section.sectionName);
         }
 
+        //選んだ部署IDの取得と検索
         Map<String, String[]> params = request().body().asFormUrlEncoded();
-        long recID = Integer.parseInt(params.get("sectionfind")[0]);
+        long recID;
+        //部署指定したか判定
+        if(params.get("sectionfind")[0] != ""){
+        	recID = Integer.parseInt(params.get("sectionfind")[0]);
+        }else{
+        	return redirect(routes.Total.index());
+        }
 
         List<ThanksCard> dateSearch=ThanksCard.find.where().eq("receive.section.sectionID", recID).findList();
         List<User> user=User.find.where().eq("section.sectionID", recID).findList();
