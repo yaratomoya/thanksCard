@@ -23,6 +23,7 @@ public class ThanksCard extends Model{
 	public User receive;
 	@ManyToOne
 	public User send;
+	public Integer good;
 
 	public static Finder<Long, ThanksCard> find=new Finder<Long, ThanksCard>(
 			Long.class, ThanksCard.class
@@ -39,6 +40,7 @@ public class ThanksCard extends Model{
 		ThanksCard.category=category;
 		ThanksCard.helpDate=helpDate;
 		ThanksCard.receive=receive;
+		ThanksCard.good=0;
 		ThanksCard.save();
 
 		return ThanksCard.cardID;

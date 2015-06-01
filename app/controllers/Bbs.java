@@ -78,8 +78,36 @@ public class Bbs extends Controller {
     	}else{
     		la="%"+l+"%";
     	}
-    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
-        return ok(lastMonth.render(lastMonthCard));
+
+    	HashMap<String, String> reSections=new HashMap<>();
+    	for(Section section : Section.find.all()){
+    		reSections.put(section.sectionID.toString(), section.sectionName);
+    	}
+
+    	HashMap<String, String> reName=new HashMap<>();
+    	for(User user : User.find.all()){
+    		reName.put(user.userID.toString(), user.userName);
+    	}
+
+    	HashMap<String, String> seSections=new HashMap<>();
+    	for(Section section : Section.find.all()){
+    		seSections.put(section.sectionID.toString(), section.sectionName);
+    	}
+
+    	HashMap<String, String> seName=new HashMap<>();
+    	for(User user : User.find.all()){
+    		seName.put(user.userID.toString(), user.userName);
+    	}
+
+    	HashMap<String, String> cate=new HashMap<>();
+    	for(HelpCategory category : HelpCategory.find.all()){
+    		cate.put(category.categoryID.toString(), category.categoryName);
+    	}
+
+    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).orderBy("good DESC").findList();
+    	List <ThanksCard> las = new ArrayList<ThanksCard>();
+    	for(int i = 0; i<2; i++){las.add(lastMonthCard.get(i));}
+        return ok(lastMonth.render(las,bbsForm,reSections,reName,seSections,seName,cate));
     }
 
     public static Result search() {
@@ -103,10 +131,16 @@ public class Bbs extends Controller {
 		GoodCount delcount = GoodCount.find.where().eq("cards.cardID", cardID).eq("user.userID", user.userID).findUnique();
 
 
+
     	if(delcount != null){
     		delcount.delete();
+    		card.good -=1;
+    		card.save();
     	}else{
+    		card.good +=1;
+    		card.save();
     		count.save();
+
     	}
     	return redirect(routes.Bbs.index());
     }
