@@ -28,17 +28,17 @@ public class ThanksCard extends Model{
 			Long.class, ThanksCard.class
 	);
 
-	public static Long create(String helpText, String thanksText, Long receive, Long category, Date helpDate, Long send, Date send_Date){
+	public static Long create(String helpText, String thanksText, User receive, HelpCategory category, Date helpDate, User send, Date send_Date){
 		ThanksCard ThanksCard=new ThanksCard();
 
 		ThanksCard.helpText=helpText;
 		ThanksCard.thanksText=thanksText;
-		ThanksCard.send=(User.find.byId(send));
-		ThanksCard.deleteRequest = 0;
-		ThanksCard.sendDay = send_Date;
-		ThanksCard.category = HelpCategory.find.byId(category);
+		ThanksCard.send=send;
+		ThanksCard.deleteRequest=0;
+		ThanksCard.sendDay=send_Date;
+		ThanksCard.category=category;
 		ThanksCard.helpDate=helpDate;
-		ThanksCard.receive = (User.find.byId(receive));
+		ThanksCard.receive=receive;
 		ThanksCard.save();
 
 		return ThanksCard.cardID;

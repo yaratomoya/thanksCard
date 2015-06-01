@@ -47,22 +47,20 @@
 	<DIV id =form>
 	@form(routes.Send.create()){
 
-			@select(sendForm("receive.section.sectionName"),options(reSections), '_default -> "-- 部署 --", '_label -> "")
-			@select(sendForm("receptionName"),options(reName), '_default -> "-- 名前 --", '_label -> "")
+			@select(sendForm("receive.section.sectionID"),options(reSections), '_default -> "-- 部署 --", '_label -> "")
+			@select(sendForm("receive.userID"),options(reName), '_default -> "-- 名前 --", '_label -> "")
 			@textarea(sendForm("helpText"), 'cols -> 50,  'rows -> 6, '_label -> "")
 			@textarea(sendForm("thanksText"), 'cols -> 50,  'rows -> 6, '_label -> "")
-			@inputDate(sendForm("date"), '_label -> "")
-			@select(sendForm("category"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
+			@inputDate(sendForm("helpDate"), '_label -> "")
+			@select(sendForm("category.categoryID"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
 
 
 
 
-			<input style="margin-left:200px;" type="submit" name="send"
+			<input style="margin-left:200px;" type="submit"
 			 onclick="alert('送信完了しました。');"   value="登録" />
-
+	}
 			<input style="margin-left:100px;" type="button" name="reset" onclick="" value="クリア">
-
-}
 	</DIV>
 
 

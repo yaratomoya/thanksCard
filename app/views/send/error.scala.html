@@ -1,0 +1,11 @@
+@(form: Form[ThanksCard])
+
+<html>
+	<body>
+			@if(form.hasGlobalErrors){
+				<p class="error">
+				@form.globalError.message
+				</p>
+			}
+	</body>
+</html>
