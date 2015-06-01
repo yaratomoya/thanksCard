@@ -44,9 +44,10 @@ public class Send extends Controller {
 //		}
 
 		ThanksCard card=form.get();
-		User receive=User.find.where().eq("userName", card.receive.userName).findUnique();
-		User send=User.find.where().eq("userName", session("login")).findUnique();
-		HelpCategory cate=HelpCategory.find.where().eq("categoryName", card.category.categoryName).findUnique();
+
+		User receive=User.find.where().eq("userID", card.receive.userID).findUnique();
+		User send=User.find.where().eq("userCD", session("login")).findUnique();
+		HelpCategory cate=HelpCategory.find.where().eq("categoryID", card.category.categoryID).findUnique();
 		Date sendDay=new Date();
 
 		ThanksCard.create(card.helpText, card.thanksText, receive, cate, card.helpDate,

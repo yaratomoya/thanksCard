@@ -1,9 +1,8 @@
 package models;
 
+import java.util.*;
 import java.util.Date;
-
 import javax.persistence.*;
-
 import models.*;
 import play.db.ebean.Model;
 import play.db.ebean.Model.Finder;
@@ -23,6 +22,8 @@ public class ThanksCard extends Model{
 	public User receive;
 	@ManyToOne
 	public User send;
+	//@OneToMany(cascade=CascadeType.ALL)
+	//public List<ThanksCard> thanksCard;
 
 	public static Finder<Long, ThanksCard> find=new Finder<Long, ThanksCard>(
 			Long.class, ThanksCard.class
