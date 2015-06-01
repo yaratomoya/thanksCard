@@ -1,4 +1,4 @@
-@(totalForm: Form[ThanksCard])(reSections: HashMap[String, String])(card: List[ThanksCard])(user: List[User])(count: Iterator[Integer])
+@(totalForm: Form[ThanksCard])(reSections: HashMap[String, String])(card: List[ThanksCard])(user: List[User])(count: Iterator[Integer])(user_name: Iterator[String])
 
 @import helper._
 
@@ -67,8 +67,14 @@
 			<tbody>
 	@for(t <- user){
 				<tr>
-					<td>順位</td>
-					<td>@t.userName</td>
+					<td>@count.next</td>
+					<td>
+					@if(user_name.hasNext()){
+					@user_name.next()
+					}else{
+					count.get(0)
+					}
+					</td>
 					<td>
 					@if(count.hasNext()){
 					@count.next()
@@ -76,7 +82,7 @@
 					count.get(0)
 					}</td>
 					<td>count.get(0)</td>
-					<td>t.helpText</td>
+					<td>card.helpText</td>
 				</tr>
 			}
 			</tbody>
