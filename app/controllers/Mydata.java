@@ -11,8 +11,8 @@ import views.html.mydata.*;
 public class Mydata extends Controller {
     public static Result index() {
     	Form<ThanksCard> mydataForm=Form.form(ThanksCard.class);
-    	List<ThanksCard> reCard=ThanksCard.find.where().eq("receive.userCD", session("login")).findList();
-    	List<ThanksCard> seCard=ThanksCard.find.where().eq("send.userCD", session("login")).findList();
+    	List<ThanksCard> reCard=ThanksCard.find.where().eq("receive.userCD", session("login")).eq("deleteRequest", 0).findList();
+    	List<ThanksCard> seCard=ThanksCard.find.where().eq("send.userCD", session("login")).eq("deleteRequest", 0).findList();
         return ok(index.render(mydataForm,reCard,seCard));
     }
 

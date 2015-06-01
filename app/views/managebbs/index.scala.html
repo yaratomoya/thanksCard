@@ -1,5 +1,5 @@
-
-
+@(card: List[ThanksCard])(managebbsForm: Form[ThanksCard])
+@import helper._
 <html>
 
 <head>
@@ -25,31 +25,43 @@
 
 	<h2>削除依頼一覧</h2>
 
-			<table border="1" style="table-layout: auto;">
+		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th>投稿日</th>
-					<th>感謝した人</th>
-					<th>感謝された人</th>
-					<th>してもらったこと</th>
-					<th>感謝の言葉</th>
+					<th rowspan="2">日付</th>
+					<th colspan="3">感謝された人</th>
+					<th rowspan="2">カテゴリ</th>
+					<th rowspan="2">してもらったこと</th>
+					<th rowspan="2">感謝の言葉</th>
+					<th colspan="3">感謝した人</th>
+					<th rowspan="2">削除ボタン</th>
+				</tr>
+				<tr>
+					<th colspan="2">部署</th>
+					<th>名前</th>
+					<th colspan="2">部署</th>
+					<th>名前</th>
 				</tr>
 			</thead>
 			<tbody>
-				<tr>
-					<th>date</th>
-					<th>send</th>
-					<th>reception</th>
-					<th>helpText</th>
-					<th>thanksText</th>
-					<th><input type="checkbox" name="check" value=""></th>
-
-				</tr>
+				@for(c <- card){
+					<tr>
+						<th>@c.helpDate</th>
+						<th colspan="2">@c.receive.section.sectionName</th>
+						<th>@c.receive.userName</th>
+						<th>@c.category.categoryName</th>
+						<th>@c.helpText</th>
+						<th>@c.thanksText</th>
+						<th colspan="2">@c.send.section.sectionName</th>
+						<th>@c.send.userName</th>
+						<th>@form(routes.ManageBbs.delete(c.cardID)){<input type="submit" name="delete" value="削除依頼">}</th>
+					</tr>
+				}
 			</tbody>
 		</table>
 
 		<br>
-		<input style="margin-left:400;" type="button" name="delete" onclick="" value="削除">
+
 </DIV>
 
 

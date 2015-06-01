@@ -44,6 +44,8 @@ GET		/mydata/new					controllers.Mydata.popup()
 
 
 GET		/managebbs					controllers.ManageBbs.index()
+POST	/managebbs/:ID					controllers.ManageBbs.delete(ID: Long)
+
 
 GET		/total						controllers.Total.index()
 POST	/total						controllers.Total.search()
