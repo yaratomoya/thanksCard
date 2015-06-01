@@ -27,7 +27,7 @@ POST    /login						controllers.Login.authenticate()
 GET		/logout						controllers.Login.logout()
 
 GET		/bbs						controllers.Bbs.index()
-GET		/bbs/pop					controllers.Bbs.popup()
+GET		/bbs/pop/:ID					controllers.Bbs.popup(ID: Long)
 GET 	/bbs/lastMonth				controllers.Bbs.lastMonth()
 GET		/bbs/search					controllers.Bbs.search()
 POST	/bbs						controllers.Bbs.search()
