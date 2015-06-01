@@ -7,11 +7,11 @@
 	<style>
 	 #search{border:1px solid #dcdcdc;
 	 		padding:5px;
-
+			height:150px;
 			margin-bottom:50px;
 	 		}
 
-	 #BBS{width:750px;
+	 #BBS{width:850px;
 	 border:1px solid #dcdcdc;
 	 padding:10px;
 	 float:right;
@@ -44,20 +44,31 @@
 
 		@form(routes.Bbs.search()){
 
-		<h3>感謝された人</h3>
-			@select(bbsForm("receive.section.sectionID"),options(reSections), '_default -> "-- 部署 --", '_label -> "部署")
-			@select(bbsForm("receive.userID"),options(reName), '_default -> "-- 名前 --", '_label -> "")
-		<h3>感謝した人</h3>
-			@select(bbsForm("send.section.sectionID"),options(seSections), '_default -> "-- 部署 --", '_label -> "")
-			@select(bbsForm("send.userID"),options(seName), '_default -> "-- 名前 --", '_label -> "")
-		<h3>日付</h3>
-			@inputDate(bbsForm("helpDate"), '_label -> "")
-		<h3>カテゴリ</h3>
-			@select(bbsForm("category.categoryID"),options(category), '_default -> "-- カテゴリ --", '_label -> "")
+<table>
+		<tr>
+		<th>感謝された人</th>
+		<th>	@select(bbsForm("receive.section.sectionID"),options(reSections), '_default -> "-- 部署 --", '_label -> "")</th>
+		<th>	@select(bbsForm("receive.userID"),options(reName), '_default -> "-- 名前 --", '_label -> "")</th>
+		<th>&nbsp;&nbsp;&nbsp;</th>
+		<th>日付</th>
+		<th>	@inputDate(bbsForm("helpDate"), '_label -> "")</th>
+		</tr>
+		<tr>
+		<th>感謝した人&nbsp;</th>
+		<th>@select(bbsForm("send.section.sectionID"),options(seSections), '_default -> "-- 部署 --", '_label -> "")</th>
+		<th>@select(bbsForm("send.userID"),options(seName), '_default -> "-- 名前 --", '_label -> "")</th>
+		<th style="width:100px"></th>
+		<th>カテゴリ</th>
+		<th>	@select(bbsForm("category.categoryID"),options(category), '_default -> "-- カテゴリ --", '_label -> "")</th>
+		<th><input type="submit" value="検索" class="btn" style="margin-left:50px;"></th>
+		</tr>
 
-			<input type="submit" value="検索" class="btn">
+		</table>
+
 
 		}
+
+
 
 	</DIV>
 
@@ -65,32 +76,38 @@
 	<DIV id="BBS">
 
 
+
+
+
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th>日付</th>
-					<th>部署</th>
+					<th rowspan="2">日付</th>
+					<th colspan="3">感謝された人</th>
+					<th rowspan="2">カテゴリ</th>
+					<th rowspan="2">してもらったこと</th>
+					<th rowspan="2">感謝の言葉</th>
+					<th colspan="3">感謝した人</th>
+					<th rowspan="2">いいね！</th>
+					<th rowspan="2">詳細</th>
+				</tr>
+				<tr>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>カテゴリ</th>
-					<th>してもらったこと</th>
-					<th>感謝の言葉</th>
-					<th>部署</th>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>いいね！</th>
-					<th>詳細
-					</th>
 				</tr>
 			</thead>
 			<tbody>
 				@for(c <- card){
 					<tr>
 						<th>@c.helpDate</th>
-						<th>@c.receive.section.sectionName</th>
+						<th colspan="2">@c.receive.section.sectionName</th>
 						<th>@c.receive.userName</th>
 						<th>@c.category.categoryName</th>
 						<th>@c.helpText</th>
 						<th>@c.thanksText</th>
-						<th>@c.send.section.sectionName</th>
+						<th colspan="2">@c.send.section.sectionName</th>
 						<th>@c.send.userName</th>
 						<th>@form(routes.Bbs.good(c.cardID)){<input type="submit" value="いいね！"/>}</th>
 						<th>@form(routes.Bbs.popup()){<input type = "button"  value = "詳細"
