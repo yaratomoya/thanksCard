@@ -62,7 +62,6 @@ public class Total extends Controller {
         	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
-        	user2.add(i+1);
         	user2.add(arr[i][0]);
         	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){
@@ -123,7 +122,6 @@ public class Total extends Controller {
         	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
-        	user2.add(i+1);
         	user2.add(arr[i][0]);
         	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){

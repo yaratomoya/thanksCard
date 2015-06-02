@@ -64,9 +64,10 @@
 				</tr>
 			</thead>
 			<tbody>
-	@for(t <- user){
+	@for(t <- 1 to 10){
+		@if(user.size >= t){
 				<tr>
-					<td>@count.next</td>
+					<td>@t</td>
 					<td>
 					@if(user_name.hasNext()){
 					@user_name.next()
@@ -87,6 +88,7 @@
 					count.get(0)
 					}</td>
 				</tr>
+				}
 			}
 			</tbody>
 		</table>
