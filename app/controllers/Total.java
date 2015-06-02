@@ -8,13 +8,9 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
-import com.avaje.ebean.*;
-
 import models.Section;
 import models.ThanksCard;
-import models.GoodCount;
 import models.User;
-import play.*;
 import play.mvc.*;
 import play.data.Form;
 import views.html.total.*;
@@ -60,9 +56,11 @@ public class Total extends Controller {
         	String uid_st = String.valueOf(arr[i][1]);
         	long uid = Integer.parseInt(uid_st);
         	count=0;
+
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
         	user2.add(arr[i][0]);
+
         	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){
         		t_count = good_cnt.get(j);
@@ -120,9 +118,11 @@ public class Total extends Controller {
         	String uid_st = String.valueOf(arr[i][1]);
         	long uid = Integer.parseInt(uid_st);
         	count=0;
+
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
         	user2.add(arr[i][0]);
+
         	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){
         		t_count = good_cnt.get(j);

@@ -47,14 +47,8 @@
 
 	<h3>検索結果</h3>
 
-	@if(card.isEmpty()){
-	一致は一件もありませんでした
-	}else{
-
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
-
-
 
 				<tr>
 					<th>ランキング</th>
@@ -70,29 +64,24 @@
 					<td>@t</td>
 					<td>
 					@if(user_name.hasNext()){
-					@user_name.next()
-					}else{
-					count.get(0)
+						@user_name.next()
 					}
 					</td>
 					<td>
 					@if(count.hasNext()){
-					@count.next()
-					}else{
-					count.get(0)
-					}</td>
+						@count.next()
+					}
+					</td>
 					<td>
 					@if(count.hasNext()){
-					@count.next()
-					}else{
-					count.get(0)
-					}</td>
+						@count.next()
+					}
+					</td>
 				</tr>
 				}
 			}
 			</tbody>
 		</table>
-	}
 
 </DIV>
 
