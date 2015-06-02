@@ -64,12 +64,12 @@ public class Bbs extends Controller {
     	//List<ThanksCard> ca=ThanksCard.find.where().eq("send.userName", card.send).findList();
 
     	return ok(popup.render(
-    			card.cardID,
+    			//card.cardID,
     			card.helpDate,
     			card.receive.section.sectionName,
     			card.receive.userName,
-    			card.helpText,
     			card.category.categoryName,
+    			card.helpText,
     			card.thanksText,
     			card.send.section.sectionName,
     			card.send.userName
@@ -118,7 +118,7 @@ public class Bbs extends Controller {
 
     	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).orderBy("good DESC").findList();
     	List <ThanksCard> las = new ArrayList<ThanksCard>();
-    	for(int i = 0; i<2; i++){las.add(lastMonthCard.get(i));}
+    	for(int i = 0; i<1; i++){las.add(lastMonthCard.get(i));}
         return ok(lastMonth.render(las,bbsForm,reSections,reName,seSections,seName,cate));
     }
 

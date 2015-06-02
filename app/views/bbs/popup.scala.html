@@ -1,18 +1,26 @@
-@(id: Long)(d: Date)(re_cate: String)(re_user: String)(help_cate: String)(help: String)(thanks:String)(se_cate:String)(se_user:String)
+@(d: Date)(re_cate: String)(re_user: String)(help_cate: String)(help: String)(thanks:String)(se_cate:String)(se_user:String)
 @import helper._
 
 <html>
 <body>
+<ul>
+	<li>日付け</li>
+		@d<br/>
 
-@id
-@d
-@re_cate
-@re_user
-@help_cate
-@help
-@thanks
-@se_cate
-@se_user
+	<p>@re_cate<br/>
+		@re_user さんへ</p>
 
+	<p><li>カテゴリ</li>
+		@help_cate</p>
+
+	<p><li>してもらったこと</li>
+		@help</p>
+
+	<p><li>感謝の言葉</li>
+		@thanks</p>
+
+	<p>@se_cate<br/>
+		@se_user</p>
+</ul>
 </body>
 </html>
