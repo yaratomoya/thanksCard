@@ -19,7 +19,7 @@ public class Users extends Controller{
 
 	public static Result newUser(){
     	HashMap<String, String> Sections=new HashMap<>();
-        for(Section section : Section.find.all()){
+        for(Section section : Section.find.where().eq("delete","0").findList()){
             Sections.put(section.sectionID.toString(), section.sectionName);
         }
 

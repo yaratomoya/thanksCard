@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import models.Section;
-import models.Section;
+
 import play.data.Form;
 import play.mvc.Controller;
 import play.mvc.Result;
@@ -21,7 +21,7 @@ public class Sections extends Controller{
 
 	public static Result newSection(){
     	HashMap<String, String> Sections=new HashMap<>();
-        for(Section section : Section.find.all()){
+        for(Section section : Section.find.where().eq("delete","0").findList()){
             Sections.put(section.sectionID.toString(), section.sectionName);
         }
 

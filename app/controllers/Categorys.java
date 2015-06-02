@@ -3,7 +3,7 @@ package controllers;
 import java.util.*;
 
 import models.HelpCategory;
-import models.Section;
+
 import play.data.Form;
 import play.mvc.*;
 import views.html.categorys.*;
@@ -18,7 +18,7 @@ public class Categorys extends Controller{
 
 	public static Result newCategory(){
     	HashMap<String, String> cate=new HashMap<>();
-    	for(HelpCategory category : HelpCategory.find.all()){
+    	for(HelpCategory category : HelpCategory.find.where().eq("delete","0").findList()){
     		cate.put(category.categoryID.toString(), category.categoryName);
     	}
 		return ok(newForm.render(categoryForm,cate));

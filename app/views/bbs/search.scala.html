@@ -1,4 +1,4 @@
-@(searchList: List[ThanksCard], dateSearch: List[ThanksCard], recSecSearch: List[ThanksCard])
+@(searchList: List[ThanksCard])
 @import helper._
 
 <html>
@@ -53,7 +53,7 @@
 				</tr>
 			</thead>
 			<tbody>
-				@for(c <- recSecSearch){
+				@for(c <- searchList){
 					<tr>
 						<th>@c.helpDate</th>
 						<th>@c.receive.section.sectionName</th>
