@@ -52,7 +52,7 @@ public class Bbs extends Controller {
     		cate.put(category.categoryID.toString(), category.categoryName);
     	}
 
-    	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).findList();
+    	List<ThanksCard> thisMonthCard=ThanksCard.find.where().like("helpDate", la).eq("deleteRequest","0").findList();
 
         return ok(index.render(thisMonthCard,bbsForm,reSections,reName,seSections,seName,cate));
     }
@@ -116,7 +116,7 @@ public class Bbs extends Controller {
     		cate.put(category.categoryID.toString(), category.categoryName);
     	}
 
-    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).orderBy("good DESC").findList();
+    	List<ThanksCard> lastMonthCard=ThanksCard.find.where().like("helpDate", la).eq("deleteRequest","0").orderBy("good DESC").findList();
     	List <ThanksCard> las = new ArrayList<ThanksCard>();
     	for(int i = 0; i<1; i++){las.add(lastMonthCard.get(i));}
         return ok(lastMonth.render(las,bbsForm,reSections,reName,seSections,seName,cate));
@@ -144,7 +144,7 @@ public class Bbs extends Controller {
 		}
 
 		if(ca.receive.userID != null){
-			recSecSearch=ThanksCard.find.where().eq("receive.userID", ca.receive.userID).findList();
+			recSecSearch=ThanksCard.find.where().eq("receive.userID", ca.receive.userID).eq("deleteRequest","0").findList();
 			return ok(search.render(recSecSearch));
 		}
 		return ok(search.render(card));
