@@ -61,7 +61,6 @@
 					<th>名前</th>
 					<th>感謝された数</th>
 					<th>いいね！数</th>
-					<th>内容</th>
 				</tr>
 			</thead>
 			<tbody>
@@ -81,8 +80,12 @@
 					}else{
 					count.get(0)
 					}</td>
-					<td>count.get(0)</td>
-					<td>card.helpText</td>
+					<td>
+					@if(count.hasNext()){
+					@count.next()
+					}else{
+					count.get(0)
+					}</td>
 				</tr>
 			}
 			</tbody>

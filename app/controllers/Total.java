@@ -30,13 +30,15 @@ public class Total extends Controller {
         }
 
         List<ThanksCard> dateSearch=ThanksCard.find.all();
+        List<ThanksCard> good_cnt;
         List<User> user=User.find.all();
 
         ArrayList<Integer> user2 = new ArrayList<Integer>();
         ArrayList<String> user2_st = new ArrayList<String>();
         User user3 = user.get(0);
         User t_user;
-        int kazu = 0;
+        ThanksCard t_count;
+        int kazu = 0, count = 0;
 
         int[][] arr = new int[user.size()][2];
 
@@ -47,6 +49,7 @@ public class Total extends Controller {
         	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).findRowCount());
         	arr[i][0] = user2.get(i);
         	arr[i][1] = new Integer(user3.userID.toString());
+
         }
         MyComparator comparator = new MyComparator(0);
         Arrays.sort(arr, comparator);
@@ -56,10 +59,17 @@ public class Total extends Controller {
         for(int i=0; i<user.size(); i++){
         	String uid_st = String.valueOf(arr[i][1]);
         	long uid = Integer.parseInt(uid_st);
+        	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
         	user2.add(i+1);
         	user2.add(arr[i][0]);
+        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).findList();
+        	for(int j=0; j<good_cnt.size(); j++){
+        		t_count = good_cnt.get(j);
+        		count += t_count.good;
+        	}
+        	user2.add(count);
         }
 
         Iterator<Integer> it = user2.iterator();
@@ -84,13 +94,15 @@ public class Total extends Controller {
         }
 
         List<ThanksCard> dateSearch=ThanksCard.find.where().eq("receive.section.sectionID", recID).findList();
+        List<ThanksCard> good_cnt;
         List<User> user=User.find.where().eq("section.sectionID", recID).findList();
 
         ArrayList<Integer> user2 = new ArrayList<Integer>();
         ArrayList<String> user2_st = new ArrayList<String>();
         User user3 = user.get(0);
         User t_user;
-        int kazu = 0;
+        ThanksCard t_count;
+        int kazu = 0, count = 0;
 
         int[][] arr = new int[user.size()][2];
 
@@ -108,10 +120,17 @@ public class Total extends Controller {
         for(int i=0; i<user.size(); i++){
         	String uid_st = String.valueOf(arr[i][1]);
         	long uid = Integer.parseInt(uid_st);
+        	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
         	user2.add(i+1);
         	user2.add(arr[i][0]);
+        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).findList();
+        	for(int j=0; j<good_cnt.size(); j++){
+        		t_count = good_cnt.get(j);
+        		count += t_count.good;
+        	}
+        	user2.add(count);
         }
 
         Iterator<Integer> it = user2.iterator();
