@@ -14,6 +14,7 @@ public class User extends Model{
 	public Integer permission;
 	@ManyToOne
 	public Section section;
+	public Integer delete;
 
 	public static Finder<Long, User> find=new Finder<Long, User>(
 		Long.class, User.class
@@ -24,11 +25,14 @@ public class User extends Model{
 		return (user != null && user.userPassword.equals(userPassword));
 	}
 
-	public static Long create(String username, String password, Integer permission){
+	public static Long create(String userCD,String username, Section section,String password, Integer permission,Integer delete){
 		User user=new User();
+		user.userCD=userCD;
 		user.userName=username;
 		user.userPassword=password;
 		user.permission=permission;
+		user.section=section;
+		user.delete=0;
 		user.save();
 		return user.userID;
 	}

@@ -1,5 +1,6 @@
 package controllers;
 
+import java.util.HashMap;
 import java.util.List;
 
 import models.Section;
@@ -18,15 +19,20 @@ public class Sections extends Controller{
 	}
 
 	public static Result newSection(){
-		return ok(newForm.render(sectionForm));
+    	HashMap<String, String> Sections=new HashMap<>();
+        for(Section section : Section.find.all()){
+            Sections.put(section.sectionID.toString(), section.sectionName);
+        }
+
+		return ok(newForm.render(sectionForm,Sections));
 	}
 
 	public static Result createSection(){
 		Form<Section> form=sectionForm.bindFromRequest();
 
-		if(form.hasErrors()){
-			return badRequest(newForm.render(form));
-		}
+//		if(form.hasErrors()){
+//			return badRequest(newForm.render(form));
+//		}
 
 		Section section=form.get();
 		Section.create(section.sectionName);

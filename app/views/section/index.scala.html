@@ -9,20 +9,13 @@
 		<a href="@routes.Sections.newSection()">部署登録</a>
 
 		<table>
-			<thead>
-				<tr>
-					<th>ID</th>
-					<th>部署名</th>
-				</tr>
-			</thead>
-			<tbody>
+
 			@for(s <- sectionList){
 				<tr>
-					<td>@s.sectionID</td>
 					<td>@s.sectionName</td>
 				</tr>
 			}
-			</tbody>
+
 		</table>
 	}
 	</body>
