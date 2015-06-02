@@ -1,4 +1,4 @@
-@(userForm: Form[User])
+@(userForm: Form[User])(Sections: HashMap[String, String])
 
 @import helper._
 
@@ -31,7 +31,7 @@
 		<h3>変更する社員</h3>
 			@inputText(userForm("userCD"), '_label -> "社員ID")
 			@inputText(userForm("userName"), '_label -> "社員名")
-			@select(userForm("section_id"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(userForm("section.sectionID"),options(Sections), '_default -> "-- 部署 --", '_label -> "部署")
 			@inputText(userForm("userPassword"), '_label -> "パスワード")
 
 			<input type="submit" value="Create">
@@ -47,10 +47,9 @@
 		@form(routes.Users.updateUser()){
 		<h3>変更する社員</h3>
 			@inputText(userForm("userCD"), '_label -> "社員ID")
-			@inputText(userForm("userName"), '_label -> "社員名")
 		<h3>変更後</h3>
 			@inputText(userForm("userName"), '_label -> "社員名")
-			@select(userForm("section_id"),options("a" -> "部署A", "B" -> "部署B"), '_default -> "-- 部署 --", '_label -> "部署")
+			@select(userForm("section.sectionID"),options(Sections), '_default -> "-- 部署 --", '_label -> "部署")
 			<input type="submit" value="Update">
 		}
 
