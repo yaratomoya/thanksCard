@@ -9,20 +9,13 @@
 		<a href="@routes.Categorys.newCategory()">カテゴリ登録</a>
 
 		<table>
-			<thead>
+		@for(c <- categoryList){
 				<tr>
-					<th>ID</th>
-					<th>カテゴリ名</th>
-				</tr>
-			</thead>
-			<tbody>
-			@for(c <- categoryList){
-				<tr>
-					<td>@c.categoryID</td>
+
 					<td>@c.categoryName</td>
 				</tr>
 			}
-			</tbody>
+
 		</table>
 	}
 	</body>

@@ -1,4 +1,4 @@
-@(categoryForm: Form[HelpCategory])
+@(categoryForm: Form[HelpCategory])(cate: HashMap[String, String])
 @import helper._
 
 <html>
@@ -29,7 +29,6 @@
 		<h2>新カテゴリの作成</h2>
 
 		@form(routes.Categorys.createCategory()){
-			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
 			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
 
 			<input type="submit" value="登録">
@@ -43,8 +42,7 @@
 		<h2>変更するカテゴリ名</h2>
 
 		@form(routes.Categorys.updateCategory()){
-			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
-			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
+			@select(categoryForm("categoryID"),options(cate), '_default -> "-- カテゴリ --", '_label -> "カテゴリ")
 
 			<h2>変更後</h2>
 			@inputText(categoryForm("categoryName"),'_label -> "カテゴリ名")
@@ -59,7 +57,7 @@
 		<h2>削除</h2>
 
 		@form(routes.Sections.deleteSection()){
-			@inputText(categoryForm("categoryID"),'_label -> "カテゴリID")
+			@select(categoryForm("categoryID"),options(cate), '_default -> "-- カテゴリ --", '_label -> "カテゴリ")
 
 			<input type="submit" value="削除">
 		}

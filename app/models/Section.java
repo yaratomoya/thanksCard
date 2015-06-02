@@ -10,6 +10,7 @@ public class Section extends Model{
 	@Id
 	public Long sectionID;
 	public String sectionName;
+	public Integer delete;
 	//@OneToMany
 	//public List<User> user;
 
@@ -17,9 +18,10 @@ public class Section extends Model{
 			Long.class, Section.class
 	);
 
-	public static Long create(String name){
+	public static Long create(String name, Integer delete){
 		Section section=new Section();
 		section.sectionName=name;
+		section.delete=0;
 		section.save();
 		return section.sectionID;
 	}
