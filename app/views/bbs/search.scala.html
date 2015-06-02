@@ -11,7 +11,7 @@
 			margin-bottom:50px;
 	 		}
 
-	 #BBS{width:750px;
+	 #BBS{width:850px;
 	 border:1px solid #dcdcdc;
 	 padding:10px;
 	 float:right;
@@ -22,6 +22,9 @@
 	#changeBtn{border:1px solid #dcdcdc;
 				padding:10px;
 				text-align:center;
+				width:100px;
+				height:60px;
+
 	}
 
 	</style>
@@ -38,33 +41,34 @@
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th>日付</th>
-					<th>部署</th>
+					<th rowspan="2">助けてもらった日</th>
+					<th colspan="3">感謝された人</th>
+					<th rowspan="2">カテゴリ</th>
+					<th rowspan="2">してもらったこと</th>
+					<th rowspan="2">感謝の言葉</th>
+					<th colspan="3">感謝した人</th>
+					<th rowspan="2">詳細</th>
+				</tr>
+				<tr>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>カテゴリ</th>
-					<th>してもらったこと</th>
-					<th>感謝の言葉</th>
-					<th>部署</th>
+					<th colspan="2">部署</th>
 					<th>名前</th>
-					<th>いいね！</th>
-					<th><input type = "button"  value = "詳細"/>
-
-					</th>
 				</tr>
 			</thead>
-			<tbody>
+				<tbody>
 				@for(c <- searchList){
 					<tr>
 						<th>@c.helpDate</th>
-						<th>@c.receive.section.sectionName</th>
+						<th colspan="2">@c.receive.section.sectionName</th>
 						<th>@c.receive.userName</th>
 						<th>@c.category.categoryName</th>
 						<th>@c.helpText</th>
 						<th>@c.thanksText</th>
-						<th>@c.send.section.sectionName</th>
+						<th colspan="2">@c.send.section.sectionName</th>
 						<th>@c.send.userName</th>
-						<th>goodCount</th>
-						<th>btn</th>
+						<th>@form(routes.Bbs.popup(c.cardID)){<input type = "button"  value = "詳細"
+					onclick="window.open('@routes.Bbs.popup(c.cardID)','win','width=500,height=400,menubar=yes,status=yes,scrollbars=yes') ; return false ;" />}</th>
 					</tr>
 				}
 			</tbody>
@@ -74,7 +78,7 @@
 
 	<div id=changeBtn>
 			<input type="button" name="lastMonth" onclick="location.href='@routes.Bbs.lastMonth()'" value="先月の事例">
-<br>
+<br><br>
 			<input type="button" name="thisMonth" onclick="location.href='@routes.Bbs.index()'" value="今月の事例">
 	</div>
 

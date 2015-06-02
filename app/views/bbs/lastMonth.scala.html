@@ -22,6 +22,9 @@
 	#changeBtn{border:1px solid #dcdcdc;
 				padding:10px;
 				text-align:center;
+				width:100px;
+				height:60px;
+
 	}
 
 	</style>
@@ -82,7 +85,7 @@
 		<table border="1" style="table-layout: auto;">
 			<thead style="background-color:#bbb;">
 				<tr>
-					<th rowspan="2">日付</th>
+					<th rowspan="2">助けてもらった日</th>
 					<th colspan="3">感謝された人</th>
 					<th rowspan="2">カテゴリ</th>
 					<th rowspan="2">してもらったこと</th>
@@ -121,7 +124,7 @@
 
 	<div id=changeBtn>
 			<input type="button" name="lastMonth" onclick="location.href='@routes.Bbs.lastMonth()'" value="先月の事例">
-<br>
+<br><br>
 			<input type="button" name="thisMonth" onclick="location.href='@routes.Bbs.index()'" value="今月の事例">
 	</div>
 
