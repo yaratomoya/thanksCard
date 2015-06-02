@@ -123,15 +123,33 @@ public class Bbs extends Controller {
     }
 
     public static Result search() {
+//    	Map<String, String[]> params=request().body().asFormUrlEncoded();
+//    	String d=params.get("helpDate")[0];
     	Form<ThanksCard> form=bbsForm.bindFromRequest();
 		ThanksCard ca=form.get();
+		List<ThanksCard> card=ThanksCard.find.all();
 		//String day=ca.helpDate.toString();
-		//day="%"+day+"%";
-		List<ThanksCard> catSearch=ThanksCard.find.where().eq("category.categoryID", ca.category.categoryID).findList();
-		List<ThanksCard> dateSearch=ThanksCard.find.where().eq("helpDate", ca.helpDate).findList();
-		List<ThanksCard> recSecSearch=ThanksCard.find.where().eq("receive.userID", ca.receive.userID).findList();
-        return ok(search.render(catSearch, dateSearch, recSecSearch));
+//		d="%"+d+"%";
+		List<ThanksCard> catSearch=new ArrayList<ThanksCard>();
+		List<ThanksCard> dateSearch=new ArrayList<ThanksCard>();
+		List<ThanksCard> recSecSearch=new ArrayList<ThanksCard>();
+		if(ca.category.categoryID != null && ca.receive.userID != null){
+			catSearch=ThanksCard.find.where().eq("category.categoryID", ca.category.categoryID).eq("receive.userID", ca.receive.userID).findList();
+			return ok(search.render(catSearch));
+		}
+
+		if(ca.helpDate != null){
+			dateSearch=ThanksCard.find.where().eq("helpDate", ca.helpDate).findList();
+			return ok(search.render(dateSearch));
+		}
+
+		if(ca.receive.userID != null){
+			recSecSearch=ThanksCard.find.where().eq("receive.userID", ca.receive.userID).findList();
+			return ok(search.render(recSecSearch));
+		}
+		return ok(search.render(card));
     }
+
 
     public static Result good(Long cardID){
 
