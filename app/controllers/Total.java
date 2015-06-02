@@ -29,7 +29,7 @@ public class Total extends Controller {
             reSections.put(section.sectionID.toString(), section.sectionName);
         }
 
-        List<ThanksCard> dateSearch=ThanksCard.find.all();
+        List<ThanksCard> dateSearch=ThanksCard.find.where().eq("deleteRequest", 0).findList();
         List<ThanksCard> good_cnt;
         List<User> user=User.find.all();
 
@@ -46,7 +46,7 @@ public class Total extends Controller {
         for(int i=0; i<user.size(); i++){
         	kazu = i;
         	user3 = user.get(kazu);
-        	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).findRowCount());
+        	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).eq("deleteRequest", 0).findRowCount());
         	arr[i][0] = user2.get(i);
         	arr[i][1] = new Integer(user3.userID.toString());
 
@@ -62,9 +62,8 @@ public class Total extends Controller {
         	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
-        	user2.add(i+1);
         	user2.add(arr[i][0]);
-        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).findList();
+        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){
         		t_count = good_cnt.get(j);
         		count += t_count.good;
@@ -93,7 +92,7 @@ public class Total extends Controller {
         	return redirect(routes.Total.index());
         }
 
-        List<ThanksCard> dateSearch=ThanksCard.find.where().eq("receive.section.sectionID", recID).findList();
+        List<ThanksCard> dateSearch=ThanksCard.find.where().eq("receive.section.sectionID", recID).eq("deleteRequest", 0).findList();
         List<ThanksCard> good_cnt;
         List<User> user=User.find.where().eq("section.sectionID", recID).findList();
 
@@ -109,7 +108,7 @@ public class Total extends Controller {
         for(int i=0; i<user.size(); i++){
         	kazu = i;
         	user3 = user.get(kazu);
-        	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).findRowCount());
+        	user2.add(ThanksCard.find.where().eq("receive.userID", user3.userID).eq("deleteRequest", 0).findRowCount());
         	arr[i][0] = user2.get(i);
         	arr[i][1] = new Integer(user3.userID.toString());
         }
@@ -123,9 +122,8 @@ public class Total extends Controller {
         	count=0;
         	t_user = User.find.byId(uid);
         	user2_st.add(t_user.userName);
-        	user2.add(i+1);
         	user2.add(arr[i][0]);
-        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).findList();
+        	good_cnt = ThanksCard.find.where().eq("receive.userID", uid).eq("deleteRequest", 0).findList();
         	for(int j=0; j<good_cnt.size(); j++){
         		t_count = good_cnt.get(j);
         		count += t_count.good;
