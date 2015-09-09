@@ -18,8 +18,8 @@
 </head>
 
 	<body>
-	@common("掲示板管理"){
-		<h1>掲示板管理</h1>
+	@common("削除依頼"){
+		<h1>削除依頼</h1>
 
 	<DIV class="list">
 
@@ -54,7 +54,7 @@
 						<th>@c.thanksText</th>
 						<th colspan="2">@c.send.section.sectionName</th>
 						<th>@c.send.userName</th>
-						<th>@form(routes.ManageBbs.delete(c.cardID)){<input type="submit" name="delete" value="削除依頼">}</th>
+						<th>@form(routes.ManageBbs.delete(c.cardID)){<input type="submit" name="delete" value="削除">}</th>
 					</tr>
 				}
 			</tbody>

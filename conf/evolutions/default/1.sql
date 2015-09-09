@@ -13,12 +13,14 @@ create table good_count (
 create table help_category (
   category_id               bigint not null,
   category_name             varchar(255),
+  delete                    integer,
   constraint pk_help_category primary key (category_id))
 ;
 
 create table section (
   section_id                bigint not null,
   section_name              varchar(255),
+  delete                    integer,
   constraint pk_section primary key (section_id))
 ;
 
@@ -32,6 +34,7 @@ create table thanks_card (
   category_category_id      bigint,
   receive_user_id           bigint,
   send_user_id              bigint,
+  good                      integer,
   constraint pk_thanks_card primary key (card_id))
 ;
 
@@ -42,6 +45,7 @@ create table user (
   user_password             varchar(255),
   permission                integer,
   section_section_id        bigint,
+  delete                    integer,
   constraint pk_user primary key (user_id))
 ;
 
